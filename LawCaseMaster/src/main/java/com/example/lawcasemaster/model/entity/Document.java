@@ -9,24 +9,24 @@ import java.time.Instant;
 public class Document extends BaseEntity{
 
     @Column(nullable = false)
-    private String filePath;
+    private String name;
 
     @Column(nullable = false)
     private Instant uploadedAt;
 
     @ManyToOne
     @JoinColumn(name = "case_id")
-    private Case aCase;
+    private Case caseFile;
 
     public Document() {
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getName() {
+        return name;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Instant getUploadedAt() {
@@ -37,11 +37,11 @@ public class Document extends BaseEntity{
         this.uploadedAt = uploadedAt;
     }
 
-    public Case getaCase() {
-        return aCase;
+    public Case getCaseFile() {
+        return caseFile;
     }
 
-    public void setaCase(Case aCase) {
-        this.aCase = aCase;
+    public void setCaseFile(Case caseFile) {
+        this.caseFile = caseFile;
     }
 }

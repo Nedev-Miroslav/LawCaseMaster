@@ -1,5 +1,5 @@
 package com.example.lawcasemaster.model.enums;
 
-public enum UserRoles {
-    ADMIN, LAWYER, CLIENT
+public enum RoleType {
+    ADMIN, LAWYER
 }

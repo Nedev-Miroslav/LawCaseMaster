@@ -211,17 +211,18 @@ footer {
 }
 
 .info div:nth-child(1) {
-    background-image: url("/images/pic4.jpg");
+    background-image: url("/images/temida.jpg");
     background-size: cover;
-    border-bottom-right-radius: 5rem;
+    border-bottom-left-radius: 5rem;
     border-top-left-radius: 5rem;
 }
 
 .info div:nth-child(3) {
-    background-image: url("/images/pic1.jpg");
+    background-image: url("/images/books-law.jpg");
     background-size: cover;
-    border-bottom-left-radius: 5rem;
-    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 6rem;
+    border-top-right-radius: 6rem;
+
 }
 
 .details-main {

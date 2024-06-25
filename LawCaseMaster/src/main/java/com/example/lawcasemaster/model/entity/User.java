@@ -1,10 +1,8 @@
 package com.example.lawcasemaster.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,23 +17,24 @@ public class User extends BaseEntity{
     @Column(unique = true)
     private String email;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "user_roles",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "assignedLawyer")
+    private Set<Case> cases;
 
 
     public User() {
+        this.roles = new HashSet<>();
+        this.cases = new HashSet<>();
     }
-
 
     public String getUsername() {
         return username;
@@ -61,22 +60,6 @@ public class User extends BaseEntity{
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -91,5 +74,13 @@ public class User extends BaseEntity{
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Case> getCases() {
+        return cases;
+    }
+
+    public void setCases(Set<Case> cases) {
+        this.cases = cases;
     }
 }

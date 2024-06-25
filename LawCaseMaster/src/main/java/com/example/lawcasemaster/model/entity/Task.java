@@ -20,7 +20,7 @@ public class Task extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "case_id")
-    private Case aCase;
+    private Case caseFile;
 
     @ManyToOne
     @JoinColumn(name = "assigned_to")
@@ -53,12 +53,12 @@ public class Task extends BaseEntity {
         this.dueDate = dueDate;
     }
 
-    public Case getaCase() {
-        return aCase;
+    public Case getCaseFile() {
+        return caseFile;
     }
 
-    public void setaCase(Case aCase) {
-        this.aCase = aCase;
+    public void setCaseFile(Case caseFile) {
+        this.caseFile = caseFile;
     }
 
     public User getAssignedTo() {

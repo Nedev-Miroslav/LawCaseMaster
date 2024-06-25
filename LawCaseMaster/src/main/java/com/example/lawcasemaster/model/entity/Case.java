@@ -1,9 +1,7 @@
 package com.example.lawcasemaster.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import com.example.lawcasemaster.model.enums.CaseType;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.HashSet;
@@ -13,33 +11,42 @@ import java.util.Set;
 @Table(name = "cases")
 public class Case extends BaseEntity{
 
-    @Column(nullable = false)
-    private String title;
+    @Column(name = "case_number", nullable = false)
+    private String caseNumber;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false)
-    private String status;
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
+    @Enumerated(EnumType.STRING)
+    private CaseType caseType;
 
-    @ManyToMany()
-    private Set<User> users = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User assignedLawyer;
+
+    @OneToMany(mappedBy = "caseFile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Document> documents;
+
 
     public Case() {
+        this.documents = new HashSet<>();
     }
 
-    public String getTitle() {
-        return title;
+    public String getCaseNumber() {
+        return caseNumber;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCaseNumber(String caseNumber) {
+        this.caseNumber = caseNumber;
     }
 
     public String getDescription() {
@@ -50,14 +57,6 @@ public class Case extends BaseEntity{
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -66,19 +65,35 @@ public class Case extends BaseEntity{
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
-        return updatedAt;
+    public CaseType getCaseType() {
+        return caseType;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setCaseType(CaseType caseType) {
+        this.caseType = caseType;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Client getClient() {
+        return client;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public User getAssignedLawyer() {
+        return assignedLawyer;
+    }
+
+    public void setAssignedLawyer(User assignedLawyer) {
+        this.assignedLawyer = assignedLawyer;
+    }
+
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(Set<Document> documents) {
+        this.documents = documents;
     }
 }
