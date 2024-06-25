@@ -44,10 +44,10 @@ public class MainController {
         return "documents";
     }
 
-    @GetMapping("/create-case")
+    @GetMapping("/add-case")
     public String createCase(Model model) {
         model.addAttribute("title", "Създаване на нов случай");
-        return "create-case";
+        return "add-case";
     }
 
     @GetMapping("/create-user")
