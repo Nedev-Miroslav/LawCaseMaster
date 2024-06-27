@@ -51,9 +51,8 @@ img {
     grid-gap: 20px;
 }
 
-div label {
+div label, h1 {
     color: #ccc;
-
 }
 
 /* Navigation */
@@ -220,8 +219,8 @@ footer {
 .info div:nth-child(3) {
     background-image: url("/images/books-law.jpg");
     background-size: cover;
-    border-bottom-right-radius: 6rem;
-    border-top-right-radius: 6rem;
+    border-bottom-right-radius: 5rem;
+    border-top-right-radius: 5rem;
 
 }
 

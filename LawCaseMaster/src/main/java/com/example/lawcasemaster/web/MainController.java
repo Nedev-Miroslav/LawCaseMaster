@@ -14,11 +14,11 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/register")
-    public String users(Model model) {
-        model.addAttribute("title", "Потребители");
-        return "register";
-    }
+//    @GetMapping("/register")
+//    public String users(Model model) {
+//        model.addAttribute("title", "Потребители");
+//        return "register";
+//    }
 
     @GetMapping("/login")
     public String cases(Model model) {
