@@ -15,7 +15,7 @@
             <li>
                 <a th:href="@{profile}">Profile</a>
             </li>
-            <li>
+            <li sec:authorize="hasRole('ADMIN')">
                 <a href="/">Admin</a>
             </li>
             <li sec:authorize="isAnonymous()">
