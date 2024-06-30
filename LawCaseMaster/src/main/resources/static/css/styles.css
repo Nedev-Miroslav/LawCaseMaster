@@ -41,6 +41,19 @@ body {
 
 }
 
+.btn-reset{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: var(--lightGray);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+.btn-reset:focus {
+    outline: none;
+}
+
 
 img {
     max-width: 100%;
@@ -71,12 +84,12 @@ div label, h1 {
     margin-bottom: 3rem;
 }
 
-.main-nav a {
+.main-nav a, .main-nav form {
     background: var(--gray-dark);
     display: block;
     text-decoration: none;
     border-radius: 6rem;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
     color: var(--lightGray);
     text-transform: uppercase;
@@ -84,10 +97,15 @@ div label, h1 {
     box-shadow: var(--shadow);
 }
 
-.main-nav a:hover {
+.main-nav a:hover, .main-nav form:hover{
     background: var(--lightGray);
     color: var(--dark);
 }
+
+.btn-reset:hover, .main-nav form:hover{
+    color: var(--dark);
+}
+
 
 /* Top Container */
 .top-container {

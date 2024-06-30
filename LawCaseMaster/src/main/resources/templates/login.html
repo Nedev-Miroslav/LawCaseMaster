@@ -1,5 +1,6 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="~{fragments/head::head}"></head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
@@ -9,8 +10,9 @@
         <div class="row g-3 align-items-center">
 
             <form
-                    action="/"
-                    method="">
+                    th:method="POST"
+                    th:action="@{/users/login}"
+                    >
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>

@@ -31,7 +31,7 @@ public class Case extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User assignedLawyer;
+    private UserEntity assignedLawyer;
 
     @OneToMany(mappedBy = "caseFile", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Document> documents;
@@ -81,11 +81,11 @@ public class Case extends BaseEntity{
         this.client = client;
     }
 
-    public User getAssignedLawyer() {
+    public UserEntity getAssignedLawyer() {
         return assignedLawyer;
     }
 
-    public void setAssignedLawyer(User assignedLawyer) {
+    public void setAssignedLawyer(UserEntity assignedLawyer) {
         this.assignedLawyer = assignedLawyer;
     }
 

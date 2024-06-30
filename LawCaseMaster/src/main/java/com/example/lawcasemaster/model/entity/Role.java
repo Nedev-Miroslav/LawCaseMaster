@@ -4,10 +4,6 @@ import com.example.lawcasemaster.model.enums.RoleType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToMany;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Role extends BaseEntity{

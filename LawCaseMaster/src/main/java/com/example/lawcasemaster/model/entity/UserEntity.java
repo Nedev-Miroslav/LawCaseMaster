@@ -2,12 +2,14 @@ package com.example.lawcasemaster.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity{
+public class UserEntity extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -20,19 +22,19 @@ public class User extends BaseEntity{
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.EAGER)
 //    @JoinTable(
 //            name = "user_roles",
 //            joinColumns = @JoinColumn(name = "user_id"),
 //            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private List<Role> roles;
 
     @OneToMany(mappedBy = "assignedLawyer")
     private Set<Case> cases;
 
 
-    public User() {
-        this.roles = new HashSet<>();
+    public UserEntity() {
+        this.roles = new ArrayList<>();
         this.cases = new HashSet<>();
     }
 
@@ -68,11 +70,11 @@ public class User extends BaseEntity{
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

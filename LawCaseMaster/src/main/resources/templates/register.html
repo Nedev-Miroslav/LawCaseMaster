@@ -1,5 +1,6 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 
 <head th:replace="~{fragments/head::head}"></head>
 <body>
@@ -8,15 +9,17 @@
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
-                    action="/"
-                    method="">
+                    th:action="@{/users/register}"
+                    th:method="POST"
+                    th:object="${registerDTO}">
+
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
-                        <input name="username"
-
+                        <input th:field="*{username}"
+                               name="username"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
@@ -37,7 +40,8 @@
                         <label for="inputEmail" class="col-form-label ">Email</label>
                     </div>
                     <div class="col-auto">
-                        <input name="email"
+                        <input th:field="*{email}"
+                               name="email"
                                required
                                type="email"
                                id="inputEmail"
@@ -53,7 +57,8 @@
                         <label for="phoneNumber" class="col-form-label ">Phone Number</label>
                     </div>
                     <div class="col-auto">
-                        <input name="phoneNumber"
+                        <input th:field="*{phoneNumber}"
+                               name="phoneNumber"
                                required minlength="5" maxlength="20"
                                type="text"
                                id="phoneNumber"
@@ -68,7 +73,8 @@
                         <label for="inputPassword" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
-                        <input name="password"
+                        <input th:field="*{password}"
+                               name="password"
                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputPassword"
@@ -86,7 +92,8 @@
                         <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
                     </div>
                     <div class="col-auto">
-                        <input name="confirmPassword"
+                        <input th:field="*{confirmPassword}"
+                               name="confirmPassword"
                                required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"

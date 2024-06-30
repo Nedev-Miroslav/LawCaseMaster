@@ -1,32 +1,37 @@
-<header>
-  <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
-  <nav class="main-nav">
-    <ul>
+<header xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+    <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
+    <nav class="main-nav">
+        <ul>
 
-<!--      <li>-->
-<!--        <a href="/">Home</a>-->
-<!--      </li>-->
-      <li>
-        <a href="/">Login</a>
-      </li>
-      <li>
-        <a href="/">Register</a>
-      </li>
-      <li>
-        <a href="/">About</a>
-      </li>
-      <li>
-        <a href="/">Add Document</a>
-      </li>
-      <li>
-        <a href="/">Profile</a>
-      </li>
-      <li>
-        <a href="/">Admin</a>
-      </li>
-      <li>
-        <a href="/">Logout</a>
-      </li>
-    </ul>
-  </nav>
+            <!--      <li>-->
+            <!--        <a href="/">Home</a>-->
+            <!--      </li>-->
+            <li>
+                <a href="/">Add Document</a>
+            </li>
+            <li>
+                <a th:href="@{about}">About</a>
+            </li>
+            <li>
+                <a th:href="@{profile}">Profile</a>
+            </li>
+            <li>
+                <a href="/">Admin</a>
+            </li>
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{users/login}">Login</a>
+            </li>
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{users/register}">Register</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <form th:method="POST"
+                      th:action="@{users/logout}"
+
+                >
+                    <button class="btn-reset btn-reset:focus" th:href="@{/logout}">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 </header>
