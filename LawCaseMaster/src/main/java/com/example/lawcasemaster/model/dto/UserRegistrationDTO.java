@@ -1,26 +1,26 @@
 package com.example.lawcasemaster.model.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class UserRegistrationDTO {
-    @NotEmpty
-    @Size(min = 5, max = 30)
+    @NotEmpty(message = "")
+    @Size(min = 5, max = 30, message = "Username length must be between 5 and 30 characters!")
     private String username;
 
-    @NotEmpty
+    @NotBlank(message = "Please enter email!")
     @Email
     private String email;
 
-    @NotEmpty
-    @Size(min = 6, max = 30)
+    @NotEmpty(message = "Please enter valid phone number!")
     private String phoneNumber;
-    @NotEmpty
+    @NotEmpty(message = "")
+    @Size(min = 5, max = 30, message = "Password length must be between 5 and 30 characters!")
     private String password;
-    @NotEmpty
+    @NotEmpty(message = "")
+    @Size(min = 5, max = 30, message = "Confirm Password length must be between 5 and 30 characters!")
     private String confirmPassword;
 
     public UserRegistrationDTO() {

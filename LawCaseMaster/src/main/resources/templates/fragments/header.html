@@ -1,5 +1,12 @@
 <header xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+    <div class="firstCont">
     <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
+        <p class="text-right text-white  m-lg-5">Welcome to Law Case Master,
+            <th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block>
+            <th:block sec:authorize="isAnonymous()">Anonymous</th:block>
+        </p>
+
+    </div>
     <nav class="main-nav">
         <ul>
 
@@ -7,7 +14,7 @@
             <!--        <a href="/">Home</a>-->
             <!--      </li>-->
             <li>
-                <a href="/">Add Document</a>
+                <a th:href="/">Add Document</a>
             </li>
             <li>
                 <a th:href="@{about}">About</a>

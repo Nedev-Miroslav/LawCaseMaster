@@ -29,20 +29,33 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void registerUser(UserRegistrationDTO userRegistrationDTO) {
-        userRepository.save(map(userRegistrationDTO));
+    public boolean registerUser(UserRegistrationDTO data) {
+        Optional<UserEntity> existingUser = userRepository.findByUsername(data.getUsername());
+        if(existingUser.isPresent()) {
+            return false;
+        }
 
-    }
-
-    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
-        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);
+        UserEntity mappedEntity = modelMapper.map(data, UserEntity.class);
         Role role = repository.findByRoleType(RoleType.LAWYER);
 
-        mappedEntity.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
+        mappedEntity.setPassword(passwordEncoder.encode(data.getPassword()));
         mappedEntity.getRoles().add(role);
-        return mappedEntity;
+
+
+        userRepository.save(mappedEntity);
+        return true;
 
     }
+
+//    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
+//        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);
+//        Role role = repository.findByRoleType(RoleType.LAWYER);
+//
+//        mappedEntity.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
+//        mappedEntity.getRoles().add(role);
+//        return mappedEntity;
+//
+//    }
 
     public boolean register(UserRegistrationDTO data) {
         Optional<UserEntity> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());

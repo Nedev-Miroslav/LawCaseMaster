@@ -21,10 +21,15 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @ModelAttribute("registerDTO")
+    @ModelAttribute("registerData")
     public UserRegistrationDTO registerDTO() {
         return new UserRegistrationDTO();
 
+    }
+
+    @ModelAttribute
+    public void addAttribute(Model model) {
+        model.addAttribute("hasRegisterError");
     }
 
 
@@ -35,11 +40,31 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String register(UserRegistrationDTO userRegistrationDTO) {
+    public String doRegister(
+            @Valid UserRegistrationDTO data,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
+    ) {
 
-        userService.registerUser(userRegistrationDTO);
+        if (bindingResult.hasErrors() || !data.getPassword().equals(data.getConfirmPassword())) {
+            redirectAttributes.addFlashAttribute("registerData", data);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
 
-        return "redirect:/login";
+            return "redirect:/users/register";
+
+        }
+
+        boolean success = userService.registerUser(data);
+
+        if (!success) {
+            redirectAttributes.addFlashAttribute("hasRegisterError", true);
+            redirectAttributes.addFlashAttribute("registerData", data);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
+
+            return "redirect:/users/register";
+        }
+
+        return "redirect:/users/login";
     }
 
 //    @PostMapping("/register")
