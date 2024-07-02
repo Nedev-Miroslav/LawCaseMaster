@@ -31,9 +31,9 @@
                         <div class=" bg-danger rounded" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
                         >Username length must be between 5 and 30 characters
                         </div>
-                        <small id="usernameUniqueError"
+                        <div id="usernameUniqueError"
                                class=" bg-danger rounded" th:if="${hasRegisterError}">Username is already
-                            occupied</small>
+                            occupied</div>
 
                     </div>
                 </div>

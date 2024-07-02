@@ -12,30 +12,50 @@
             <form
                     th:method="POST"
                     th:action="@{/users/login}"
-                    >
+                    th:object="${loginData}"
+            >
+
+<!--                <div th:each="error: ${#fields.errors()}" th:text="${error}" class="danger">Error messages</div>-->
                 <div>
+                <div  th:if="${hasLoginError}" class="danger">Incorrect username or password!</div>
+
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
-                        <input type="text"
-                               name="username"
-                               required minlength="4" maxlength="20"
-                               id="inputUsername"
-                               class="form-control"
-                               aria-describedby="usernameHelpInline">
+                        <input
+                                th:field="*{username}"
+                                th:errorclass="bg-danger"
+                                type="text"
+                                name="username"
+
+                                id="inputUsername"
+                                class="form-control"
+                                aria-describedby="usernameHelpInline">
+
+
+                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                        >Username length must be between 5 and 30 characters
+                        </div>
                     </div>
+
                 </div>
                 <div>
                     <div class="col-auto">
                         <label for="inputPassword" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
-                        <input type="password"
-                               name="password"
-                               required minlength="4" maxlength="20"
-                               id="inputPassword" class="form-control"
-                               aria-describedby="passwordHelpInline">
+                        <input
+                                th:field="*{password}"
+                                th:errorclass="bg-danger"
+                                type="password"
+                                name="password"
+
+                                id="inputPassword" class="form-control"
+                                aria-describedby="passwordHelpInline">
+
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">

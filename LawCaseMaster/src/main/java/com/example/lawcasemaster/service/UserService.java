@@ -1,5 +1,6 @@
 package com.example.lawcasemaster.service;
 
+import com.example.lawcasemaster.model.dto.UserLoginDTO;
 import com.example.lawcasemaster.model.dto.UserRegistrationDTO;
 import com.example.lawcasemaster.model.entity.Role;
 import com.example.lawcasemaster.model.entity.UserEntity;
@@ -73,5 +74,22 @@ public class UserService {
 
         return true;
 
+    }
+
+    public boolean login(UserLoginDTO data) {
+        Optional<UserEntity> byUsername = userRepository.findByUsername(data.getUsername());
+
+        if(byUsername.isEmpty()) {
+            return false;
+        }
+
+        boolean passwordNotMatch = passwordEncoder
+                .matches(data.getPassword(), byUsername.get().getPassword());
+
+        if (!passwordNotMatch) {
+            return false;
+        }
+
+        return true;
     }
 }

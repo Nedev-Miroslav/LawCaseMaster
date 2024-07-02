@@ -4,15 +4,13 @@ package com.example.lawcasemaster.service;
 import com.example.lawcasemaster.model.entity.Role;
 import com.example.lawcasemaster.model.entity.UserEntity;
 import com.example.lawcasemaster.model.enums.RoleType;
+import com.example.lawcasemaster.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import com.example.lawcasemaster.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import java.util.List;
 
 public class LawCaseMasterUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
@@ -35,7 +33,7 @@ public class LawCaseMasterUserDetailsService implements UserDetailsService {
 
         return User.withUsername(userEntity.getUsername())
                 .password(userEntity.getPassword())
-                .authorities(userEntity.getRoles().stream().map(Role::getRoleType).map(LawCaseMasterUserDetailsService::mapped).toList()) /*TODO*/
+                .authorities(userEntity.getRoles().stream().map(Role::getRoleType).map(LawCaseMasterUserDetailsService::mapped).toList())
                 .disabled(false)
                 .build();
     }
