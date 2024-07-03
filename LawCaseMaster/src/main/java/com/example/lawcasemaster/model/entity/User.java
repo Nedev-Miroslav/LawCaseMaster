@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class UserEntity extends BaseEntity{
+public class User extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -33,7 +33,7 @@ public class UserEntity extends BaseEntity{
     private Set<Case> cases;
 
 
-    public UserEntity() {
+    public User() {
         this.roles = new ArrayList<>();
         this.cases = new HashSet<>();
     }

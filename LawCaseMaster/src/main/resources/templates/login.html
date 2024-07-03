@@ -17,7 +17,7 @@
 
 <!--                <div th:each="error: ${#fields.errors()}" th:text="${error}" class="danger">Error messages</div>-->
                 <div>
-                <div  th:if="${hasLoginError}" class="danger">Incorrect username or password!</div>
+                <div class=" bg-danger rounded"  th:if="${showError}" >Incorrect username or password!</div>
 
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
@@ -28,15 +28,11 @@
                                 th:errorclass="bg-danger"
                                 type="text"
                                 name="username"
-
+                                required minlength="5" maxlength="30"
                                 id="inputUsername"
                                 class="form-control"
                                 aria-describedby="usernameHelpInline">
 
-
-                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-                        >Username length must be between 5 and 30 characters
-                        </div>
                     </div>
 
                 </div>
@@ -50,12 +46,11 @@
                                 th:errorclass="bg-danger"
                                 type="password"
                                 name="password"
-
+                                required minlength="5" maxlength="30"
                                 id="inputPassword" class="form-control"
                                 aria-describedby="passwordHelpInline">
 
-                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
-                        </div>
+
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">

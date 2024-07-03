@@ -24,7 +24,7 @@ public class Task extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "assigned_to")
-    private UserEntity assignedTo;
+    private User assignedTo;
 
     public Task() {
     }
@@ -61,11 +61,11 @@ public class Task extends BaseEntity {
         this.caseFile = caseFile;
     }
 
-    public UserEntity getAssignedTo() {
+    public User getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(UserEntity assignedTo) {
+    public void setAssignedTo(User assignedTo) {
         this.assignedTo = assignedTo;
     }
 }

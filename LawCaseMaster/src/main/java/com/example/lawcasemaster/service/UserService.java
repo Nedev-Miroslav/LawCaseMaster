@@ -3,7 +3,7 @@ package com.example.lawcasemaster.service;
 import com.example.lawcasemaster.model.dto.UserLoginDTO;
 import com.example.lawcasemaster.model.dto.UserRegistrationDTO;
 import com.example.lawcasemaster.model.entity.Role;
-import com.example.lawcasemaster.model.entity.UserEntity;
+import com.example.lawcasemaster.model.entity.User;
 import com.example.lawcasemaster.model.enums.RoleType;
 import com.example.lawcasemaster.repository.RoleRepository;
 import com.example.lawcasemaster.repository.UserRepository;
@@ -31,12 +31,12 @@ public class UserService {
     }
 
     public boolean registerUser(UserRegistrationDTO data) {
-        Optional<UserEntity> existingUser = userRepository.findByUsername(data.getUsername());
+        Optional<User> existingUser = userRepository.findByUsername(data.getUsername());
         if(existingUser.isPresent()) {
             return false;
         }
 
-        UserEntity mappedEntity = modelMapper.map(data, UserEntity.class);
+        User mappedEntity = modelMapper.map(data, User.class);
         Role role = repository.findByRoleType(RoleType.LAWYER);
 
         mappedEntity.setPassword(passwordEncoder.encode(data.getPassword()));
@@ -59,13 +59,13 @@ public class UserService {
 //    }
 
     public boolean register(UserRegistrationDTO data) {
-        Optional<UserEntity> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());
+        Optional<User> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());
 
         if(existingUser.isPresent()) {
             return false;
         }
 
-        UserEntity user = this.modelMapper.map(existingUser, UserEntity.class);
+        User user = this.modelMapper.map(existingUser, User.class);
         user.setPassword(passwordEncoder.encode(data.getPassword()));
 
 
@@ -77,7 +77,7 @@ public class UserService {
     }
 
     public boolean login(UserLoginDTO data) {
-        Optional<UserEntity> byUsername = userRepository.findByUsername(data.getUsername());
+        Optional<User> byUsername = userRepository.findByUsername(data.getUsername());
 
         if(byUsername.isEmpty()) {
             return false;

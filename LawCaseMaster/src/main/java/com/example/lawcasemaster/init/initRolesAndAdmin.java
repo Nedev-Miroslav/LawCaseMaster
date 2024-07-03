@@ -1,7 +1,7 @@
 package com.example.lawcasemaster.init;
 
 import com.example.lawcasemaster.model.entity.Role;
-import com.example.lawcasemaster.model.entity.UserEntity;
+import com.example.lawcasemaster.model.entity.User;
 import com.example.lawcasemaster.model.enums.RoleType;
 import com.example.lawcasemaster.repository.RoleRepository;
 import com.example.lawcasemaster.repository.UserRepository;
@@ -46,7 +46,7 @@ public class initRolesAndAdmin implements CommandLineRunner {
         }
 
         Role role = roleRepository.findByRoleType(RoleType.ADMIN);
-        UserEntity user = new UserEntity();
+        User user = new User();
         user.setUsername("Admin");
         user.setPassword(passwordEncoder.encode("adminspassword"));
         user.getRoles().add(role);
