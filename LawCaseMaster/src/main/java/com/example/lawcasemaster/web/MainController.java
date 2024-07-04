@@ -9,29 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("title", "Начална страница");
+    public String index() {
         return "index";
     }
-//
-////    @GetMapping("/register")
-////    public String users(Model model) {
-////        model.addAttribute("title", "Потребители");
-////        return "register";
-////    }
-//
-////    @GetMapping("/login")
-////    public String cases(Model model) {
-////        model.addAttribute("title", "Случаи");
-////        return "login";
-////    }
-//
-//    @GetMapping("/about")
-//    public String tasks(Model model) {
-//        model.addAttribute("title", "Задачи");
-//        return "about";
-//    }
-//
+
+
+    @GetMapping("/about")
+    public String tasks(Model model) {
+        model.addAttribute("title", "Задачи");
+        return "about";
+    }
+
 //    @GetMapping("/court-sessions")
 //    public String courtSessions(Model model) {
 //        model.addAttribute("title", "Съдебни сесии");

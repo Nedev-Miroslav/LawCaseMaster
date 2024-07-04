@@ -319,34 +319,35 @@ body {
     border: none;
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: pointer;
-    min-height: 65vh;
+    background: #ccc;
+    min-height: 66vh;
 }
 
 .profile-card:before {
     content: "";
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
-    width: 4px;
+    width: 1px;
     height: 100%;
-    background-color: #bbbef5;
+    background-color: #c6a69c;
     transform: scaleY(1);
-    transition: all 0.5s;
+    transition: all 1s;
     transform-origin: bottom
 }
 
 .profile-card:after {
     content: "";
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
     width: 4px;
     height: 100%;
-    background-color: #0833e3;
+    background-color: #ec540f;
     transform: scaleY(0);
-    transition: all 0.5s;
+    transition: all 1s;
     transform-origin: bottom
 }
 
@@ -365,6 +366,10 @@ body {
     padding: 0
 }
 
+.prof {
+    margin: 4rem;
+}
+
 .social-list li {
     padding: 10px;
     color: #0833e3;
@@ -372,27 +377,27 @@ body {
 }
 
 .buttons button:nth-child(1) {
-    border: 1px solid #0833e3 !important;
+    border: 1px solid #ec540f !important;
     color: #ffffff;
     height: 40px
 }
 
 .buttons button:nth-child(1):hover {
-    border: 1px solid #0833e3 !important;
+    border: 1px solid #ec540f !important;
     color: #fff;
     height: 40px;
-    background-color: #0833e3
+    background-color: #ec540f
 }
 
 .buttons button:nth-child(2) {
-    border: 1px solid #0833e3 !important;
+    border: 1px solid #ec540f !important;
     color: #ffffff;
     height: 40px
 }
 
 .buttons button:nth-child(2):hover {
-    border: 1px solid #0833e3 !important;
+    border: 1px solid #ec540f !important;
     color: #fff;
     height: 40px;
-    background-color: #0833e3
+    background-color: #ec540f
 }

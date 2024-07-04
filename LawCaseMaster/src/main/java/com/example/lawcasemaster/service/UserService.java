@@ -1,6 +1,6 @@
 package com.example.lawcasemaster.service;
 
-import com.example.lawcasemaster.model.dto.UserLoginDTO;
+import com.example.lawcasemaster.model.dto.LoggedUserProfileDTO;
 import com.example.lawcasemaster.model.dto.UserRegistrationDTO;
 import com.example.lawcasemaster.model.entity.Role;
 import com.example.lawcasemaster.model.entity.User;
@@ -20,14 +20,16 @@ public class UserService {
     private final RoleRepository repository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final LoggedUserService loggedUserService;
 
 
 
-    public UserService(UserRepository userRepository, RoleRepository repository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository repository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, LoggedUserService loggedUserService) {
         this.userRepository = userRepository;
         this.repository = repository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.loggedUserService = loggedUserService;
     }
 
     public boolean registerUser(UserRegistrationDTO data) {
@@ -48,6 +50,10 @@ public class UserService {
 
     }
 
+    public LoggedUserProfileDTO getProfileData() {
+        return modelMapper.map(loggedUserService.getUser(), LoggedUserProfileDTO.class);
+    }
+
 //    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
 //        UserEntity mappedEntity = modelMapper.map(userRegistrationDTO, UserEntity.class);
 //        Role role = repository.findByRoleType(RoleType.LAWYER);
@@ -58,38 +64,41 @@ public class UserService {
 //
 //    }
 
-    public boolean register(UserRegistrationDTO data) {
-        Optional<User> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());
+//    public boolean register(UserRegistrationDTO data) {
+//        Optional<User> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());
+//
+//        if(existingUser.isPresent()) {
+//            return false;
+//        }
+//
+//        User user = this.modelMapper.map(existingUser, User.class);
+//        user.setPassword(passwordEncoder.encode(data.getPassword()));
+//
+//
+//        this.userRepository.save(user);
+//
+//
+//        return true;
+//
+//    }
+//
+//    public boolean login(UserLoginDTO data) {
+//        Optional<User> byUsername = userRepository.findByUsername(data.getUsername());
+//
+//        if(byUsername.isEmpty()) {
+//            return false;
+//        }
+//
+//        boolean passwordNotMatch = passwordEncoder
+//                .matches(data.getPassword(), byUsername.get().getPassword());
+//
+//        if (!passwordNotMatch) {
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
-        if(existingUser.isPresent()) {
-            return false;
-        }
-
-        User user = this.modelMapper.map(existingUser, User.class);
-        user.setPassword(passwordEncoder.encode(data.getPassword()));
-
-
-        this.userRepository.save(user);
-
-
-        return true;
-
-    }
-
-    public boolean login(UserLoginDTO data) {
-        Optional<User> byUsername = userRepository.findByUsername(data.getUsername());
-
-        if(byUsername.isEmpty()) {
-            return false;
-        }
-
-        boolean passwordNotMatch = passwordEncoder
-                .matches(data.getPassword(), byUsername.get().getPassword());
-
-        if (!passwordNotMatch) {
-            return false;
-        }
-
-        return true;
-    }
+//    public Object getProfileData() {
+//    }
 }
