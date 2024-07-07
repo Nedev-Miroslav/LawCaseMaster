@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
@@ -67,4 +67,12 @@ public class MainController {
 //        model.addAttribute("title", "Контакти");
 //        return "contact";
 //    }
+//
+//        @GetMapping("/routes")
+//    public String contact(Model model) {
+//
+//        return "routes";
+//    }
+
+
 }

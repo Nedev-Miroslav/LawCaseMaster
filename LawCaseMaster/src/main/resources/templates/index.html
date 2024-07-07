@@ -1,5 +1,6 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 
 <head th:replace="~{fragments/head::head}"></head>
 <body>
@@ -7,11 +8,14 @@
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
     <!-- Top Container -->
-    <section class="top-container">
+    <section  class="top-container">
         <div class="showcase">
-            <h1>Find amazing routes</h1>
-            <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
-            <a href="/routes" class="btn">To routes</a>
+            <h1>Easily manage your law cases!</h1>
+            <p>Our platform simplifies case tracking and documentation, saving you time and effort</p>
+            <div sec:authorize="isAnonymous()">
+                <p>Get Started</p>
+                <a th:href="@{login}" class="btn">Login</a>
+            </div>
         </div>
         <div class="top-box top-box-a">
             <h4>Времето в София</h4>
@@ -26,11 +30,18 @@
     </section>
 
     <!-- Boxes Section -->
-    <section class="boxes">
+    <section sec:authorize="isAuthenticated()" class="boxes">
+        <a th:href="@{add-client}" class="main-btn" >
+            <div class="box">
+                <img src="/images/feather.png" height="150px" alt="">
+                <h3>Add Client</h3>
+                <p>When you want the wind to blow on your face!</p>
+            </div>
+        </a>
         <a href="/" class="main-btn" >
             <div class="box">
                 <img src="/images/scales.png" height="150px" alt="">
-                <h3>Cases</h3>
+                <h3>Add Case</h3>
                 <p>Is this your Leg day?</p>
             </div>
         </a>
@@ -39,13 +50,6 @@
                 <img src="/images/document.png" height="150px" alt="">
                 <h3>Documents</h3>
                 <p>When you want to be one with nature!</p>
-            </div>
-        </a>
-        <a href="/" class="main-btn" >
-            <div class="box">
-                <img src="/images/feather.png" height="150px" alt="">
-                <h3>Tasks</h3>
-                <p>When you want the wind to blow on your face!</p>
             </div>
         </a>
         <a href="/" class="main-btn" >

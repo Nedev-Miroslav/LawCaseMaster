@@ -1,0 +1,97 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+<!--<div class="wrapper">-->
+<!-- Navigation -->
+<header th:replace="~{fragments/header::header}"></header>
+
+<!-- Top Container -->
+<div class="row justify-content-center ">
+  <form id="adding-form" class="w-25 rounded text-white mt-5"
+        th:method="POST"
+        th:action="@{/add-client}"
+        th:object="${clientData}"
+       >
+
+
+    <div class="text-danger" th:if="${clientError}"></div>
+    <h3>Add a new client</h3>
+    <div>
+      <div class="form-group">
+        <label for="firstName" class="col-form-label ">First name</label>
+      </div>
+      <div class="form-group">
+        <input name="name"
+
+               type="text"
+               id="firstName"
+               class="form-control"
+               th:field="*{firstName}"
+               aria-describedby="inputNameError">
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></div>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group">
+        <label for="lastName" class="col-form-label ">Last name</label>
+      </div>
+      <div class="form-group">
+        <input name="name"
+
+               type="text"
+               id="lastName"
+               th:field="*{lastName}"
+               class="form-control"
+               aria-describedby="inputNameError">
+            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></div>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group">
+        <label for="email" class="col-form-label ">Email</label>
+      </div>
+      <div class="form-group">
+        <input name="name"
+
+               type="text"
+               id="email"
+               th:field="*{email}"
+               class="form-control"
+               aria-describedby="inputNameError">
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group">
+        <label for="phoneNumber" class="col-form-label ">Phone number</label>
+      </div>
+      <div class="form-group">
+        <input name="name"
+
+               type="text"
+               id="phoneNumber"
+               class="form-control"
+               th:field="*{phoneNumber}"
+               aria-describedby="inputNameError">
+        <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></div>
+
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center mt-4">
+      <button class="btn btn-primary btn-block w-50" type="submit">Add Client</button>
+    </div>
+
+  </form>
+</div>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+</body>
+</html>

@@ -5,7 +5,7 @@
             <th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block>
             <th:block sec:authorize="isAnonymous()">Anonymous</th:block>
 
-       
+
 
     </div>
     <nav class="main-nav">
@@ -15,7 +15,7 @@
             <!--        <a href="/">Home</a>-->
             <!--      </li>-->
             <li>
-                <a th:href="@{add-case}">Add Document</a>
+                <a th:href="@{add-case}">Add Case</a>
             </li>
             <li>
                 <a th:href="@{about}">About</a>

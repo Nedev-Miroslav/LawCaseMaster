@@ -2,6 +2,7 @@ package com.example.lawcasemaster.config;
 
 import com.example.lawcasemaster.repository.UserRepository;
 import com.example.lawcasemaster.service.LawCaseMasterUserDetailsService;
+import com.example.lawcasemaster.service.impl.LawCaseMasterUserDetailsServiceImpl;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,7 +49,7 @@ public class SecurityConfig {
 
     @Bean
     public LawCaseMasterUserDetailsService userDetailsService(UserRepository userRepository) {
-        return new LawCaseMasterUserDetailsService(userRepository);
+        return new LawCaseMasterUserDetailsServiceImpl(userRepository);
     }
 
 

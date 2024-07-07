@@ -289,10 +289,10 @@ footer {
 
 }
 
-#add-case-form {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
+#adding-form {
+    border-radius: 6rem;
+    background: #8C6432;
+    padding: 3rem;
 }
 
 #map {
