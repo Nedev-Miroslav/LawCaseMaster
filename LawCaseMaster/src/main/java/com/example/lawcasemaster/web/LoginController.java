@@ -34,7 +34,6 @@ public class LoginController {
 
     @GetMapping("/login-error")
     public ModelAndView loginError() {
-        System.out.println("TEST");
         ModelAndView modelAndView = new ModelAndView("login");
         modelAndView.addObject("showError", true);
         modelAndView.addObject("loginData", new UserLoginDTO());

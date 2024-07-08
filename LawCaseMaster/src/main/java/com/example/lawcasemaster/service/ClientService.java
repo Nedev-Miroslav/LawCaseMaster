@@ -9,4 +9,6 @@ public interface ClientService {
     boolean create(AddClientDTO data);
 
     List<Client> getAllMyClients();
+
+    void deleteClient(Long id);
 }

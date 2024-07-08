@@ -1,0 +1,47 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Case number</th>
+                <th>Case type</th>
+                <th>Created at</th>
+                <th>Description</th>
+                <th>Client name</th>
+                <th>Remove client</th>
+            </tr>
+            </thead>
+            <tbody th:each="case: ${allMyCases}">
+            <tr>
+                <td th:text="${case.caseNumber}">Case number</td>
+                <td th:text="${case.caseType}">Case type</td>
+                <td th:text="${case.createdAt}">Created at</td>
+                <td th:text="${case.description}">Description</td>
+                <td th:text="${case.client.firstName} + ' ' + ${case.client.lastName}">Client name</td>
+
+                <td>
+                    <form
+                            th:method="delete"
+                            th:action="@{/cases/{id}(id = ${case.id})}">
+
+                        <button class="btn-danger btn">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+</html>

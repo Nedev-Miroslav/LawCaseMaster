@@ -4,6 +4,7 @@ import com.example.lawcasemaster.model.enums.CaseType;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 @Table(name = "cases")
 public class Case extends BaseEntity{
 
-    @Column(name = "case_number", nullable = false)
+    @Column(name = "case_number", nullable = false, unique = true)
     private String caseNumber;
 
     @Column(columnDefinition = "TEXT")
@@ -19,7 +20,7 @@ public class Case extends BaseEntity{
 
 
     @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @Enumerated(EnumType.STRING)
     private CaseType caseType;
@@ -57,11 +58,11 @@ public class Case extends BaseEntity{
         this.description = description;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 

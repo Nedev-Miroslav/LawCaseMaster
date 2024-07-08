@@ -44,7 +44,6 @@ public class ClientServiceImpl implements ClientService {
 
         return true;
 
-
     }
 
     @Override
@@ -53,7 +52,18 @@ public class ClientServiceImpl implements ClientService {
 
        return clientRepository.findAllByUser_Id(user.getId());
 
+    }
 
+    @Override
+    public void deleteClient(Long id) {
+        User user = loggedUserService.getUser();
+        Optional<Client> clientToRemove =  clientRepository.findByIdAndUser_id(id, user.getId());
+
+      if(clientToRemove.isPresent()){
+          clientRepository.deleteById(id);
+      }
 
     }
+
+
 }

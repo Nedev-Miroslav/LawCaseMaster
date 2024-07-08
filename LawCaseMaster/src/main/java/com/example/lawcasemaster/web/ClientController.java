@@ -6,9 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -40,7 +38,7 @@ public class ClientController {
 
 
     @PostMapping("/add-client")
-    public String doAddRecipe(
+    public String doAddClient(
             @Valid AddClientDTO data,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes
@@ -58,9 +56,8 @@ public class ClientController {
 
 
         if (!success) {
-            //TODO Show error when we try to add client with same email
             redirectAttributes.addFlashAttribute("clientError", true);
-            redirectAttributes.addFlashAttribute("message", "Client has already been added!");
+
 
             return "redirect:/add-client";
         }
@@ -72,13 +69,23 @@ public class ClientController {
 
 
 
-
     @GetMapping("/client")
-    public String getClient(Model model){
+    public String getAllClient(Model model){
 
         model.addAttribute("allMyClients", clientService.getAllMyClients());
 
         return "client";
     }
+
+
+
+    @DeleteMapping("/client/{id}")
+    public String deleteClient(@PathVariable("id") Long id) {
+
+        clientService.deleteClient(id);
+
+        return "redirect:/client";
+    }
+
 
 }

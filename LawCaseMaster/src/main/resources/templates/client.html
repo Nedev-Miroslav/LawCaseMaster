@@ -7,34 +7,35 @@
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
     <div>
-        <h1>TEST</h1>
-        <table th:each="client: ${allMyClients}" class="table table-striped table-dark">
+            <table class="table">
+            <thead>
             <tr>
-
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Remove client</th>
+            </tr>
+            </thead>
+            <tbody th:each="client: ${allMyClients}">
+            <tr>
                 <td th:text="${client.firstName}">First Name</td>
                 <td th:text="${client.lastName}">Last Name</td>
                 <td th:text="${client.email}">Email</td>
                 <td th:text="${client.phoneNumber}">Phone Number</td>
-                <td style="width: 15%">
+                <td>
                     <form
-                                        >
-                        <BUTTON class="btn-danger btn btn-reset">Remove</BUTTON>
+                    th:method="delete"
+                    th:action="@{/client/{id}(id = ${client.id})}"
+                    >
+                        <button class="btn-danger btn">Remove</button>
                     </form>
-
                 </td>
             </tr>
+            </tbody>
         </table>
+
     </div>
-
-
-    <!--    <section class="road">-->
-    <!--        <div>-->
-    <!--            <h2>Title</h2>-->
-    <!--            <p>Very long description</p>-->
-    <!--            <a href="/" class="btn">Learn More</a>-->
-    <!--        </div>-->
-    <!--        <img class="rounded-circle w-75 ml-5" src="/images/pic1.jpg" alt="Title image">-->
-    <!--    </section>-->
 </div>
 <!-- Wrapper Ends -->
 </body>

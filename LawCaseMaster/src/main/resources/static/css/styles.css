@@ -231,8 +231,10 @@ footer {
     border-radius: 5rem;
 }
 
+
 .info div {
     text-align: center;
+
 }
 
 .info div:nth-child(1) {
@@ -240,6 +242,11 @@ footer {
     background-size: cover;
     border-bottom-left-radius: 5rem;
     border-top-left-radius: 5rem;
+}
+
+.info div:nth-child(2) {
+    font-size: 1.1rem;
+
 }
 
 .info div:nth-child(3) {
@@ -401,3 +408,16 @@ body {
     height: 40px;
     background-color: #ec540f
 }
+
+
+th, td {
+    text-align: center;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #aaa;
+}
+tbody tr {
+    background-color: #ccc;
+}
+

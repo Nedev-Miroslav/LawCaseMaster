@@ -31,18 +31,19 @@
 
     <!-- Boxes Section -->
     <section sec:authorize="isAuthenticated()" class="boxes">
-        <a th:href="@{add-client}" class="main-btn" >
+        <a th:href="@{client}" class="main-btn" >
             <div class="box">
                 <img src="/images/feather.png" height="150px" alt="">
-                <h3>Add Client</h3>
-                <p>When you want the wind to blow on your face!</p>
+                <h3>All clients</h3>
+                <p>View all added clients!</p>
             </div>
         </a>
-        <a href="/" class="main-btn" >
+
+        <a th:href="@{cases}" class="main-btn" >
             <div class="box">
                 <img src="/images/scales.png" height="150px" alt="">
-                <h3>Add Case</h3>
-                <p>Is this your Leg day?</p>
+                <h3>All Case</h3>
+                <p>View all added cases!</p>
             </div>
         </a>
         <a href="/" class="main-btn" >
@@ -65,10 +66,9 @@
     <section class="road">
         <img src="/images/pen.png" alt="">
         <div>
-            <h2>The most commented route</h2>
-            <p>Read more about the most commented route and do not miss the
-                chance to visit it and give your opinion to help other users.</p>
-            <a href="/" class="btn">Learn More</a>
+            <h2>About us</h2>
+            <p>law case master is a web application that allows lawyers and law firms to manage their cases, clients and court documents</p>
+            <a th:href="@{about}" class="btn">Learn More</a>
         </div>
     </section>
 
