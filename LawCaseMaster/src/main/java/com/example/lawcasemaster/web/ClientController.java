@@ -48,20 +48,16 @@ public class ClientController {
             redirectAttributes.addFlashAttribute("clientData", data);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.clientData", bindingResult);
 
-
             return "redirect:/add-client";
         }
 
         boolean success = clientService.create(data);
 
-
         if (!success) {
             redirectAttributes.addFlashAttribute("clientError", true);
 
-
             return "redirect:/add-client";
         }
-
 
         return "redirect:/client";
 

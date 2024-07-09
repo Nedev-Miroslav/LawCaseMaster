@@ -17,10 +17,14 @@ public class MainController {
 
 
     @GetMapping("/about")
-    public String tasks(Model model) {
-        model.addAttribute("title", "Задачи");
+    public String getAbout() {
+
         return "about";
     }
+
+
+
+
 
 //    @GetMapping("/court-sessions")
 //    public String courtSessions(Model model) {

@@ -34,6 +34,11 @@ private final CaseService caseService;
         model.addAttribute("caseError");
     }
 
+    @ModelAttribute
+    public void addAttributeCaseMissClient(Model model) {
+        model.addAttribute("missClient");
+    }
+
 
 
     @GetMapping("/add-case")
@@ -60,6 +65,14 @@ private final CaseService caseService;
 
         boolean success = caseService.createCase(data);
 
+        boolean checkClient = caseService.checkIfClientExist(data);
+
+        if(!checkClient) {
+            redirectAttributes.addFlashAttribute("missClient", true);
+
+            return "redirect:/add-case";
+        }
+
 
         if (!success) {
             redirectAttributes.addFlashAttribute("caseError", true);
@@ -84,6 +97,7 @@ private final CaseService caseService;
 
 
     @DeleteMapping("/cases/{id}")
+
     public String deleteCase(@PathVariable("id") Long id) {
 
         caseService.deleteCase(id);

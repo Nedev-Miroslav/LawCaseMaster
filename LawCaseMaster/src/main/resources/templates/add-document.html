@@ -1,0 +1,95 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+<!--<div class="wrapper">-->
+<!-- Navigation -->
+<header th:replace="~{fragments/header::header}"></header>
+
+<!-- Top Container -->
+<div class="row justify-content-center ">
+    <form id="adding-form" class="w-25 rounded text-white mt-5"
+          th:method="POST"
+          th:action="@{/add-data}"
+          th:object="${documentData}"
+          enctype="multipart/form-data">
+
+        <h3>Add a new document</h3>
+        <div class="text-danger" th:if="${documentError}">Document has already been added by you or your colleague!</div>
+        <div>
+            <div class="form-group">
+                <label for="documentName" class="col-form-label ">Document name</label>
+            </div>
+            <div class="form-group">
+                <input name="name"
+
+                       type="text"
+                       id="documentName"
+                       class="form-control"
+                       th:field="*{name}"
+                       aria-describedby="inputNameError">
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
+
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="incomingNumber" class="col-form-label ">Incoming number</label>
+            </div>
+            <div class="form-group">
+                <input name="name"
+
+                       type="text"
+                       id="incomingNumber"
+                       class="form-control"
+                       th:field="*{incomingNumber}"
+                       aria-describedby="inputNameError">
+                <div th:if="${#fields.hasErrors('incomingNumber')}" th:errors="*{incomingNumber}" class="text-danger"></div>
+
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="caseNumber" class="col-form-label ">Case number</label>
+            </div>
+            <div class="form-group">
+                <input name="name"
+
+                       type="text"
+                       id="caseNumber"
+                       class="form-control"
+                       th:field="*{caseNumber}"
+                       aria-describedby="inputNameError">
+                <div th:if="${#fields.hasErrors('caseNumber')}" th:errors="*{caseNumber}" class="text-danger"></div>
+
+            </div>
+        </div>
+
+
+                <div>
+                    <div class="form-group">
+                        <label for="documents" class="col-form-label ">Documents</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="documents"
+                               required
+                               id="documents"
+                               class="form-control-file"
+                               aria-describedby="inputDocuments">
+                        <small id="inputDocumentError"
+                               class="invalid-feedback  form-text bg-danger rounded">Must be valid Document</small>
+                    </div>
+
+                </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary btn-block w-50" type="submit">Add Document</button>
+        </div>
+
+    </form>
+</div>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+</body>
+</html>

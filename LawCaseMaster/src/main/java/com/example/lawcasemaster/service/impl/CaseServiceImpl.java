@@ -29,6 +29,15 @@ public class CaseServiceImpl implements CaseService {
     }
 
     @Override
+    public boolean checkIfClientExist(AddCaseDTO data) {
+        Optional<Client> client = clientRepository.findByEmail(data.getClientEmail());
+        if (client.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public boolean createCase(AddCaseDTO data) {
         Optional<Case> byCaseNumber = caseRepository.findByCaseNumber(data.getCaseNumber());
 
@@ -44,10 +53,9 @@ public class CaseServiceImpl implements CaseService {
         if(client.isPresent()){
             Client currentClient = client.get();
             aCase.setClient(currentClient);
-        }
-            aCase.setCreatedAt(data.getCreatedAt());
+            caseRepository.saveAndFlush(aCase);
 
-        caseRepository.save(aCase);
+        }
 
         return true;
     }

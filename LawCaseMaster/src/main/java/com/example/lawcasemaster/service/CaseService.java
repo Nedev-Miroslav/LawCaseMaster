@@ -12,5 +12,7 @@ public interface CaseService {
     List<Case> getAllMyCases();
 
     void deleteCase(Long id);
+
+    boolean checkIfClientExist(AddCaseDTO data);
 }
 

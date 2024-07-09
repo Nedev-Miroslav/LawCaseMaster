@@ -1,6 +1,9 @@
 package com.example.lawcasemaster.model.entity;
 
+import com.example.lawcasemaster.model.enums.CaseType;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "clients")
@@ -20,6 +23,9 @@ public class Client extends BaseEntity{
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Case> cases;
 
 
     public Client() {
@@ -63,5 +69,13 @@ public class Client extends BaseEntity{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Case> getCases() {
+        return cases;
+    }
+
+    public void setCases(List<Case> cases) {
+        this.cases = cases;
     }
 }
