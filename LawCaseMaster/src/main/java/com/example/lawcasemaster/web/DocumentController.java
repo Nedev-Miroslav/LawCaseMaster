@@ -46,7 +46,7 @@ public class DocumentController {
     @PostMapping("/add-document")
     public String doAddDocument(
             @Valid AddDocumentDTO data,
-            @RequestParam("addDocuments") MultipartFile file,
+            @RequestParam("addDocument") MultipartFile file,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes
     ) throws IOException {
@@ -66,7 +66,6 @@ public class DocumentController {
             return "redirect:/add-document";
         }
 
-//TODO make add document work
 
         return "redirect:/client";
     }

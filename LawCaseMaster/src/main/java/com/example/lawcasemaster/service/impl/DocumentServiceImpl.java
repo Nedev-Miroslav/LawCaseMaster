@@ -59,7 +59,10 @@ public class DocumentServiceImpl implements DocumentService {
 
         String uniqueFilename = UUID.randomUUID().toString() + extension;
 
-        Path uploadDirectory = Paths.get("src", "main", "resources", "uploads").normalize().toAbsolutePath();
+        Path uploadDirectory = Paths.get("src", "main", "resources", "uploads")
+                .normalize()
+                .toAbsolutePath();
+
         Files.createDirectories(uploadDirectory);
 
         Path destinationFile = uploadDirectory.resolve(uniqueFilename);
@@ -78,7 +81,7 @@ public class DocumentServiceImpl implements DocumentService {
         toInsert.setAddDocument(destinationFile.toString());
         toInsert.setCaseFile(currentCase.get());
 
-
+        documentRepository.save(toInsert);
         return true;
     }
 
