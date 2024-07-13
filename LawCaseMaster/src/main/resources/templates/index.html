@@ -8,13 +8,13 @@
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
     <!-- Top Container -->
-    <section  class="top-container">
+    <section class="top-container">
         <div class="showcase">
             <h1>Easily manage your law cases!</h1>
             <p>Our platform simplifies case tracking and documentation, saving you time and effort</p>
             <div sec:authorize="isAnonymous()">
                 <p>Get Started</p>
-                <a th:href="@{login}" class="btn">Login</a>
+                <a th:href="@{login}" th:text="#{nav_bar_login}" class="btn">Login</a>
             </div>
         </div>
         <div class="top-box top-box-a">
@@ -23,22 +23,23 @@
             <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
         </div>
         <div class="top-box top-box-b">
-<!--            <h4>Add new document</h4>-->
-            <img id="document-add-img" src="/images/add-document.png" alt="">
-            <a href="/" class="btn">Add document</a>
+            <a href="/" class="btn col-md-10">
+                <h4>Add new document</h4>
+                <img id="document-add-img" src="/images/add-document.png" alt="">
+            </a>
 
             <br>
-
-<!--            <h4>Add new Court session</h4>-->
-            <img id="session-add-img" src="/images/add-session.png" alt="">
-            <a href="/" class="btn">Add Court session</a>
+            <a href="/" class="btn col-md-10">
+                <h4>Add new Court session</h4>
+                <img id="session-add-img" src="/images/add-session.png" alt="">
+            </a>
 
         </div>
     </section>
 
     <!-- Boxes Section -->
-    <section  class="boxes">
-        <a th:href="@{client}" class="main-btn" >
+    <section class="boxes">
+        <a th:href="@{client}" class="main-btn">
             <div class="box">
                 <img src="/images/feather.png" height="150px" alt="">
                 <h3>All clients</h3>
@@ -46,21 +47,21 @@
             </div>
         </a>
 
-        <a th:href="@{cases}" class="main-btn" >
+        <a th:href="@{cases}" class="main-btn">
             <div class="box">
                 <img src="/images/scales.png" height="150px" alt="">
                 <h3>All Case</h3>
                 <p>View all added cases!</p>
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a href="/" class="main-btn">
             <div class="box">
                 <img src="/images/document.png" height="150px" alt="">
                 <h3>All Documents</h3>
                 <p>View all added documents!</p>
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a href="/" class="main-btn">
             <div class="box">
                 <img src="/images/court.png" height="150px" alt="">
                 <h3>All Court sessions</h3>
@@ -74,16 +75,17 @@
         <img src="/images/pen.png" alt="">
         <div>
             <h2>About us</h2>
-            <p>law case master is a web application that allows lawyers and law firms to manage their cases, clients and court documents</p>
+            <p>law case master is a web application that allows lawyers and law firms to manage their cases, clients and
+                court documents</p>
             <a th:href="@{about}" class="btn">Learn More</a>
         </div>
     </section>
 
     <!-- Portfolio -->
-<!--    <section class="gallery">-->
-<!--        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px" height="200px" alt="">-->
-<!--        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px" height="200px" alt="">-->
-<!--    </section>-->
+    <!--    <section class="gallery">-->
+    <!--        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px" height="200px" alt="">-->
+    <!--        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px" height="200px" alt="">-->
+    <!--    </section>-->
 
     <!-- <script th:src="@{/js/weather.js}"></script> -->
 </div>

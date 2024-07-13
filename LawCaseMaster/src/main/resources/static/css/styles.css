@@ -92,6 +92,16 @@ div label, h1 {
     margin-bottom: 3rem;
 }
 
+ .left-space{
+     margin-left: 0.5rem;
+ }
+
+ .profile-link{
+     text-decoration: none;
+     text-underline: none;
+     color: orange;
+ }
+
 .main-nav a, .main-nav form {
     background: var(--gray-dark);
     display: block;

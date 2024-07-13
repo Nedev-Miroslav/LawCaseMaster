@@ -1,7 +1,22 @@
 <footer class="footer bg-blur rounded">
-  <div class="container-fluid text-center">
-    <div class="h5 text-white">
+  <div class="container-fluid text-center text-white">
+    <span>&copy;</span>
+    <span class="h5" th:text="#{footer_main}">
       &copy; Law Case Master 2024. All rights reserved.
+    </span>
+    <div class="small">
+      <span th:text="#{footer_support}">
+        For support, contact us at
+      </span>
+      <a href="mailto:support@lawcasemaster.com" class="text-white bold">support@lawcasemaster.com</a>
+      <br>
+      <span th:text="#{footer_follow_us}">
+        Follow us:
+      </span>
+      <a href="https://facebook.com/lawcasemaster" class="text-white bold" target="_blank">Facebook</a> |
+      <a href="https://instagram.com/lawcasemaster" class="text-white bold" target="_blank">Instagram</a> |
+      <a href="https://linkedin.com/company/lawcasemaster" class="text-white bold" target="_blank">LinkedIn</a>
+
     </div>
   </div>
 </footer>

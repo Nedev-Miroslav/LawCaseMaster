@@ -1,9 +1,9 @@
 <header xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
     <div class="firstCont">
-    <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
+        <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
 
 
-        <div class="container">
+        <div class="container" >
             <div class="row justify-content-lg-end">
                 <div class="col-md-2 language-form">
                     <form th:method="get">
@@ -16,12 +16,15 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div  class="container" sec:authorize="isAuthenticated()">
             <div class="row justify-content-lg-start">
-            <p class="text-left  text-white bold">Welcome to Law Case Master,
-           <th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block>
-                <th:block sec:authorize="isAnonymous()">Anonymous</th:block>
-        </p>
+                <p class="text-left  text-white bold" th:text="#{nav_bat_welcome}">Welcome to Law Case Master,
+                </p>
+
+                <span class="text-white bold left-space">
+                    <a class="profile-link" th:href="@{profile}"><th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block></a>
+<!--                <th:block sec:authorize="isAnonymous()">Anonymous</th:block>-->
+                </span>
             </div>
         </div>
 
@@ -33,29 +36,30 @@
             <!--        <a href="/">Home</a>-->
             <!--      </li>-->
             <li>
-                <a th:href="@{add-case}">Add Case</a>
+                <a th:href="@{add-client}" th:text="#{nav_bar_add_client}">Add Client</a>
             </li>
             <li>
-                <a th:href="@{add-client}">Add Client</a>
+                <a th:href="@{add-case}" th:text="#{nav_bar_add_case}">Add Case</a>
             </li>
             <li>
-                <a th:href="@{profile}">Profile</a>
+                <a th:href="@{profile}" th:text="#{nav_bar_profile}">Profile</a>
             </li>
             <li sec:authorize="hasRole('ADMIN')">
-                <a href="/">Admin</a>
+                <a href="/" th:text="#{nav_bar_admin}">Admin</a>
             </li>
             <li sec:authorize="isAnonymous()">
-                <a th:href="@{users/login}">Login</a>
+                <a th:href="@{users/login}" th:text="#{nav_bar_login}">Login</a>
             </li>
             <li sec:authorize="isAnonymous()">
-                <a th:href="@{users/register}">Register</a>
+                <a th:href="@{users/register}" th:text="#{nav_bar_register}">Register</a>
             </li>
             <li sec:authorize="isAuthenticated()">
                 <form th:method="POST"
                       th:action="@{users/logout}"
 
                 >
-                    <button class="btn-reset btn-reset:focus" th:href="@{/logout}">Logout</button>
+                    <button class="btn-reset btn-reset:focus" th:href="@{/logout}" th:text="#{nav_bar_logout}">Logout
+                    </button>
                 </form>
             </li>
         </ul>
