@@ -409,6 +409,7 @@ body {
     background-color: #ec540f
 }
 
+/*tables*/
 
 th, td {
     text-align: center;
@@ -420,4 +421,11 @@ th {
 tbody tr {
     background-color: #ccc;
 }
+
+.bold{
+    font-weight: bold;
+}
+
+
+
 

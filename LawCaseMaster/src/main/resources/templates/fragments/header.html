@@ -1,11 +1,29 @@
 <header xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
     <div class="firstCont">
     <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
-        <p class="text-right text-white  m-lg-5">Welcome to Law Case Master,
-            <th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block>
-            <th:block sec:authorize="isAnonymous()">Anonymous</th:block>
 
 
+        <div class="container">
+            <div class="row justify-content-lg-end">
+                <div class="col-md-2 language-form">
+                    <form th:method="get">
+                        <label class="text-dark bold" for="lang" th:text="#{nav_bar_language}">Language</label>
+                        <select id="lang" name="lang" class="custom-select" onchange="this.form.submit()">
+                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-lg-start">
+            <p class="text-left  text-white bold">Welcome to Law Case Master,
+           <th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block>
+                <th:block sec:authorize="isAnonymous()">Anonymous</th:block>
+        </p>
+            </div>
+        </div>
 
     </div>
     <nav class="main-nav">

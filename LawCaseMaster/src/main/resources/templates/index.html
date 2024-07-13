@@ -23,14 +23,21 @@
             <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
         </div>
         <div class="top-box top-box-b">
-            <h4>Времето в Созопол</h4>
-            <h4><span id="box-b-temp">27</span><span>&#8451;</span></h4>
-            <img id="box-b-img" src="/images/cloudy.png" height="150px" alt="">
+<!--            <h4>Add new document</h4>-->
+            <img id="document-add-img" src="/images/add-document.png" alt="">
+            <a href="/" class="btn">Add document</a>
+
+            <br>
+
+<!--            <h4>Add new Court session</h4>-->
+            <img id="session-add-img" src="/images/add-session.png" alt="">
+            <a href="/" class="btn">Add Court session</a>
+
         </div>
     </section>
 
     <!-- Boxes Section -->
-    <section sec:authorize="isAuthenticated()" class="boxes">
+    <section  class="boxes">
         <a th:href="@{client}" class="main-btn" >
             <div class="box">
                 <img src="/images/feather.png" height="150px" alt="">
@@ -49,15 +56,15 @@
         <a href="/" class="main-btn" >
             <div class="box">
                 <img src="/images/document.png" height="150px" alt="">
-                <h3>Documents</h3>
-                <p>When you want to be one with nature!</p>
+                <h3>All Documents</h3>
+                <p>View all added documents!</p>
             </div>
         </a>
         <a href="/" class="main-btn" >
             <div class="box">
                 <img src="/images/court.png" height="150px" alt="">
-                <h3>Court sessions</h3>
-                <p>Going on a trip with friends?</p>
+                <h3>All Court sessions</h3>
+                <p>View all added court sessions!</p>
             </div>
         </a>
     </section>
