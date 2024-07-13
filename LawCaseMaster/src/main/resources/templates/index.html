@@ -10,10 +10,10 @@
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
-            <h1>Easily manage your law cases!</h1>
-            <p>Our platform simplifies case tracking and documentation, saving you time and effort</p>
+            <h1 th:text="#{index_page_h1}">Easily manage your law cases!</h1>
+            <p th:text="#{index_page_h1_p}">Our platform simplifies case tracking and documentation, saving you time and effort</p>
             <div sec:authorize="isAnonymous()">
-                <p>Get Started</p>
+                <p th:text="#{index_page_get_started}">Get Started</p>
                 <a th:href="@{login}" th:text="#{nav_bar_login}" class="btn">Login</a>
             </div>
         </div>
@@ -74,10 +74,9 @@
     <section class="road">
         <img src="/images/pen.png" alt="">
         <div>
-            <h2>About us</h2>
-            <p>law case master is a web application that allows lawyers and law firms to manage their cases, clients and
-                court documents</p>
-            <a th:href="@{about}" class="btn">Learn More</a>
+            <h2 th:text="#{index_about_us_h2}">About us</h2>
+            <p th:text="#{index_about_us_p}" >Law Case Master is a web application that allows lawyers and law firms to manage their cases, clients and court documents.</p>
+            <a th:text="#{index_about_us_learn_more}" th:href="@{about}" class="btn">Learn More</a>
         </div>
     </section>
 
