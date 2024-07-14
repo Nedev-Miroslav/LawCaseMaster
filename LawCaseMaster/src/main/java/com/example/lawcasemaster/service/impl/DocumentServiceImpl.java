@@ -33,6 +33,18 @@ public class DocumentServiceImpl implements DocumentService {
         this.modelMapper = modelMapper;
     }
 
+    @Override
+    public boolean checkValidCaseNumberInput(AddDocumentDTO data) {
+        Optional<Case> currentCase = caseRepository.findByCaseNumber(data.getCaseNumber());
+        return currentCase.isPresent();
+    }
+
+    @Override
+    public boolean existDock(AddDocumentDTO data) {
+        Optional<Document> optDoc = documentRepository.findByIncomingNumber(data.getIncomingNumber());
+        return optDoc.isEmpty();
+    }
+
 
     @Override
     public boolean createDocument(AddDocumentDTO data, MultipartFile file) throws IOException {
@@ -44,7 +56,8 @@ public class DocumentServiceImpl implements DocumentService {
 
 
         if (file == null || file.isEmpty()) {
-            throw new IllegalArgumentException("File is empty!");
+           // throw new IllegalArgumentException("File is empty!");
+            return false;
         }
 
 
@@ -53,7 +66,8 @@ public class DocumentServiceImpl implements DocumentService {
         if (originalFilename != null && originalFilename.contains(".")) {
             extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
         } else {
-            throw new IllegalArgumentException("No such customer added!");
+//            throw new IllegalArgumentException("No such customer added!");
+            return false;
         }
 
 
@@ -84,5 +98,6 @@ public class DocumentServiceImpl implements DocumentService {
         documentRepository.save(toInsert);
         return true;
     }
+
 
 }

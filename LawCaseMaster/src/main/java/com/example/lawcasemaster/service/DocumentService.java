@@ -8,4 +8,9 @@ import java.io.IOException;
 public interface DocumentService {
 
     boolean createDocument(AddDocumentDTO data, MultipartFile file) throws IOException;
+
+    boolean checkValidCaseNumberInput(AddDocumentDTO data);
+
+
+    boolean existDock(AddDocumentDTO data);
 }

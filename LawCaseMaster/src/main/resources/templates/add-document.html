@@ -12,10 +12,11 @@
           th:method="POST"
           th:action="@{/add-document}"
           th:object="${documentData}"
-          enctype="multipart/form-data">
+         enctype="multipart/form-data">
 
         <h3>Add a new document</h3>
-        <div class="text-danger" th:if="${documentError}">Document has already been added by you or your colleague!</div>
+        <div class="text-danger" th:if="${existDocument}">Document has already been added by you or your colleague!</div>
+        <div class="text-danger" th:if="${missCase}">There is not such case number</div>
         <div>
             <div class="form-group">
                 <label for="documentName" class="col-form-label ">Document name</label>
@@ -27,8 +28,8 @@
                        id="documentName"
                        class="form-control"
                        th:field="*{name}"
-                       aria-describedby="inputNameError">
-                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></div>
+                      >
+                <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></div>
 
             </div>
         </div>
@@ -44,7 +45,7 @@
                        id="incomingNumber"
                        class="form-control"
                        th:field="*{incomingNumber}"
-                       aria-describedby="inputNameError">
+                       >
                 <div th:if="${#fields.hasErrors('incomingNumber')}" th:errors="*{incomingNumber}" class="text-danger"></div>
 
             </div>
@@ -61,7 +62,7 @@
                        id="caseNumber"
                        class="form-control"
                        th:field="*{caseNumber}"
-                       aria-describedby="inputNameError">
+                       >
                 <div th:if="${#fields.hasErrors('caseNumber')}" th:errors="*{caseNumber}" class="text-danger"></div>
 
             </div>
@@ -71,16 +72,15 @@
                 <div>
                     <div class="form-group">
                         <label for="documents" class="col-form-label ">Documents</label>
+                        <div class="text-danger" th:if="${documentError}">Please upload valid document!</div>
                     </div>
                     <div class="form-group">
                         <input type="file"
                                name="addDocument"
-                               required
+
                                id="documents"
                                class="form-control-file"
                                aria-describedby="inputDocuments">
-                        <small id="inputDocumentError"
-                               class="invalid-feedback  form-text bg-danger rounded">Must be valid Document</small>
                     </div>
 
                 </div>

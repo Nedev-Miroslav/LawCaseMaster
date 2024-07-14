@@ -36,6 +36,16 @@ public class DocumentController {
         model.addAttribute("documentError");
     }
 
+    @ModelAttribute
+    public void addAttributeCaseMissCase(Model model) {
+        model.addAttribute("missCase");
+    }
+
+    @ModelAttribute
+    public void addAttributeExistDocument(Model model) {
+        model.addAttribute("existDocument");
+    }
+
 
     @GetMapping("/add-document")
     public String addDocument() {
@@ -46,30 +56,56 @@ public class DocumentController {
     @PostMapping("/add-document")
     public String doAddDocument(
             @Valid AddDocumentDTO data,
-            @RequestParam("addDocument") MultipartFile file,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
+            RedirectAttributes redirectAttributes,
+            @RequestParam("addDocument") MultipartFile file
     ) throws IOException {
 
-        if(bindingResult.hasErrors()) {
+
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("documentData", data);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.documentData", bindingResult);
 
             return "redirect:/add-document";
         }
 
+        boolean checkValidCaseNumber = documentService.checkValidCaseNumberInput(data);
+
+        if (!checkValidCaseNumber) {
+            redirectAttributes.addFlashAttribute("missCase", true);
+
+            return "redirect:/add-document";
+        }
+
+        boolean existDocumentByNumber = documentService.existDock(data);
+
+
+        if (!existDocumentByNumber) {
+            redirectAttributes.addFlashAttribute("existDocument", true);
+
+            return "redirect:/add-document";
+        }
+
+
         boolean success = documentService.createDocument(data, file);
 
-        if(!success) {
+
+        if (!success) {
             redirectAttributes.addFlashAttribute("documentError", true);
 
             return "redirect:/add-document";
         }
 
 
-        return "redirect:/client";
+        return "redirect:/documents";
     }
 
+    @GetMapping("/documents")
+    public String getAllDocument() {
+
+
+        return "documents";
+    }
 
 
 }
