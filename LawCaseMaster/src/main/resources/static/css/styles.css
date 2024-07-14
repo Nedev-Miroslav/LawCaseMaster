@@ -194,6 +194,7 @@ div label, h1 {
     background: var(--primary);
     text-align: center;
     padding: 1.5rem 2rem;
+    min-height: 340px;
     box-shadow: var(--shadow);
 }
 

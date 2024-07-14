@@ -23,14 +23,14 @@
             <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
         </div>
         <div class="top-box top-box-b">
-            <a href="/" class="btn col-md-10">
-                <h4>Add new document</h4>
+            <a th:href="@{add-document}" class="btn col-md-12">
+                <h4 th:text="#{index_add_document}">Add document</h4>
                 <img id="document-add-img" src="/images/add-document.png" alt="">
             </a>
 
             <br>
-            <a href="/" class="btn col-md-10">
-                <h4>Add new Court session</h4>
+            <a href="/" class="btn col-md-12">
+                <h4 th:text="#{index_add_court_session}">Add Court session</h4>
                 <img id="session-add-img" src="/images/add-session.png" alt="">
             </a>
 
@@ -42,30 +42,30 @@
         <a th:href="@{client}" class="main-btn">
             <div class="box">
                 <img src="/images/feather.png" height="150px" alt="">
-                <h3>All clients</h3>
-                <p>View all added clients!</p>
+                <h3 th:text="#{index_all_clients_h3}">All clients</h3>
+                <p th:text="#{index_all_clients_p}">View all yours added clients!</p>
             </div>
         </a>
 
         <a th:href="@{cases}" class="main-btn">
             <div class="box">
                 <img src="/images/scales.png" height="150px" alt="">
-                <h3>All Case</h3>
-                <p>View all added cases!</p>
+                <h3 th:text="#{index_all_cases_h3}">All Cases</h3>
+                <p th:text="#{index_all_cases_p}">View all yours added cases!</p>
             </div>
         </a>
         <a href="/" class="main-btn">
             <div class="box">
                 <img src="/images/document.png" height="150px" alt="">
-                <h3>All Documents</h3>
-                <p>View all added documents!</p>
+                <h3 th:text="#{index_all_documents_h3}">All Documents</h3>
+                <p th:text="#{index_all_documents_p}">View all yours added documents!</p>
             </div>
         </a>
         <a href="/" class="main-btn">
             <div class="box">
                 <img src="/images/court.png" height="150px" alt="">
-                <h3>All Court sessions</h3>
-                <p>View all added court sessions!</p>
+                <h3 th:text="#{index_all_court_session_h3}">All Court sessions</h3>
+                <p th:text="#{index_all_court_session_p}">View all yours added court sessions!</p>
             </div>
         </a>
     </section>
