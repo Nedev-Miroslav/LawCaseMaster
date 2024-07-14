@@ -5,7 +5,7 @@
 <head th:replace="~{fragments/head::head}"></head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
-    <h1 class="border-bottom">Register</h1>
+    <h1 class="border-bottom" th:text="#{nav_bar_register}">Register</h1>
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
@@ -15,7 +15,7 @@
 
                 <div>
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="inputUsername" class="col-form-label" th:text="#{register_username}">Username</label>
                     </div>
                     <div class="col-auto">
                         <input th:field="*{username}"
@@ -40,7 +40,7 @@
 
                 <div>
                     <div class="col-auto">
-                        <label for="inputEmail" class="col-form-label ">Email</label>
+                        <label for="inputEmail" class="col-form-label" th:text="#{register_email}">Email</label>
                     </div>
                     <div class="col-auto">
                         <input th:field="*{email}"
@@ -58,7 +58,7 @@
 
                     <div>
                         <div class="col-auto">
-                            <label for="phoneNumber" class="col-form-label ">Phone Number</label>
+                            <label for="phoneNumber" class="col-form-label" th:text="#{register_phone}">Phone Number</label>
                         </div>
                         <div class="col-auto">
                             <input th:field="*{phoneNumber}"
@@ -76,7 +76,7 @@
                     </div>
                     <div>
                         <div class="col-auto">
-                            <label for="inputPassword" class="col-form-label ">Password</label>
+                            <label for="inputPassword" class="col-form-label" th:text="#{register_password}">Password</label>
                         </div>
                         <div class="col-auto">
                             <input th:field="*{password}"
@@ -94,7 +94,7 @@
 
                         <div>
                             <div class="col-auto">
-                                <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
+                                <label for="inputConfirmPassword" class="col-form-label" th:text="#{register_confirm_password}">Confirm Password</label>
                             </div>
                             <div class="col-auto">
                                 <input th:field="*{confirmPassword}"
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center mt-4">
-                                <button class="btn btn-primary btn-block w-50" type="submit">Register</button>
+                                <button class="btn btn-primary btn-block w-75" type="submit" th:text="#{nav_bar_register}">Register</button>
                             </div>
                         </div>
                     </div>
