@@ -13,28 +13,34 @@
                 <th>Document name</th>
                 <th>Incoming number</th>
                 <th>Case number</th>
+                <th>Case Client</th>
                 <th>Document</th>
                 <th>Remove document</th>
+
             </tr>
             </thead>
-<!--            <tbody th:each="case: ${allMyCases}">-->
-<!--            <tr>-->
-<!--                <td th:text="${case.caseNumber}">Case number</td>-->
-<!--                <td th:text="${case.caseType}">Case type</td>-->
-<!--                <td th:text="${case.createdAt}">Created at</td>-->
-<!--                <td th:text="${case.description}">Description</td>-->
-<!--                <td th:text="${case.client.firstName} + ' ' + ${case.client.lastName}">Client name</td>-->
+            <tbody th:each="document: ${allMyDocuments}">
+            <tr>
+                <td th:text="${document.name}">Document number</td>
+                <td th:text="${document.incomingNumber}">Incoming number</td>
+                <td th:text="${document.caseFile.caseNumber}">Case number</td>
+                <td th:text="${document.caseFile.client.firstName} + ' ' + ${document.caseFile.client.lastName}">Client name</td>
+                <td>
+                    <form th:action="@{/download-document}" method="get">
+                        <input type="hidden" name="filePath" th:value="${document.addDocument}" />
+                        <button type="submit" class="btn btn-primary">Download</button>
+                    </form>
+                </td>
+                <td>
+                    <form
+                            th:method="delete"
+                            th:action="@{/documents/{id}(id = ${document.id})}">
 
-<!--                <td>-->
-<!--                    <form-->
-<!--                            th:method="delete"-->
-<!--                            th:action="@{/cases/{id}(id = ${case.id})}">-->
-
-<!--                        <button class="btn-danger btn">Remove</button>-->
-<!--                    </form>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
+                        <button class="btn-danger btn">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
         </table>
 
     </div>

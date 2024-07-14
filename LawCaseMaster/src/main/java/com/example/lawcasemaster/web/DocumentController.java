@@ -3,15 +3,24 @@ package com.example.lawcasemaster.web;
 import com.example.lawcasemaster.model.dto.AddDocumentDTO;
 import com.example.lawcasemaster.service.DocumentService;
 import jakarta.validation.Valid;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 import java.io.IOException;
 
@@ -24,7 +33,6 @@ public class DocumentController {
         this.documentService = documentService;
 
     }
-
 
     @ModelAttribute("documentData")
     public AddDocumentDTO documentData() {
@@ -45,7 +53,6 @@ public class DocumentController {
     public void addAttributeExistDocument(Model model) {
         model.addAttribute("existDocument");
     }
-
 
     @GetMapping("/add-document")
     public String addDocument() {
@@ -101,11 +108,44 @@ public class DocumentController {
     }
 
     @GetMapping("/documents")
-    public String getAllDocument() {
+    public String getAllDocument(Model model) {
+
+        model.addAttribute("allMyDocuments", documentService.getAllMyDocuments());
 
 
         return "documents";
     }
 
+    @GetMapping("/download-document")
+    public ResponseEntity<Resource> downloadDocument(@RequestParam("filePath") String filePath) throws IOException {
+        Path path = Paths.get(filePath).normalize();
+        Resource resource = new UrlResource(path.toUri());
+
+        if (!resource.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        String contentType = Files.probeContentType(path);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    }
+
+    @DeleteMapping("/documents/{id}")
+
+    public String deleteDocument(@PathVariable("id") Long id) {
+
+        documentService.deleteDocument(id);
+
+        return "redirect:/documents";
+    }
+
+
+
 
 }
+
+
+

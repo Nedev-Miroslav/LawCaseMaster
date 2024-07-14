@@ -3,9 +3,11 @@ package com.example.lawcasemaster.service.impl;
 import com.example.lawcasemaster.model.dto.AddDocumentDTO;
 import com.example.lawcasemaster.model.entity.Case;
 import com.example.lawcasemaster.model.entity.Document;
+import com.example.lawcasemaster.model.entity.User;
 import com.example.lawcasemaster.repository.CaseRepository;
 import com.example.lawcasemaster.repository.DocumentRepository;
 import com.example.lawcasemaster.service.DocumentService;
+import com.example.lawcasemaster.service.LoggedUserService;
 import org.modelmapper.ModelMapper;
 
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,11 +29,13 @@ public class DocumentServiceImpl implements DocumentService {
     private final DocumentRepository documentRepository;
     private final CaseRepository caseRepository;
     private final ModelMapper modelMapper;
+    private final LoggedUserService loggedUserService;
 
-    public DocumentServiceImpl(DocumentRepository documentRepository, CaseRepository caseRepository, ModelMapper modelMapper) {
+    public DocumentServiceImpl(DocumentRepository documentRepository, CaseRepository caseRepository, ModelMapper modelMapper, LoggedUserService loggedUserService) {
         this.documentRepository = documentRepository;
         this.caseRepository = caseRepository;
         this.modelMapper = modelMapper;
+        this.loggedUserService = loggedUserService;
     }
 
     @Override
@@ -52,7 +57,6 @@ public class DocumentServiceImpl implements DocumentService {
         if (optDoc.isPresent()){
             return false;
         }
-
 
 
         if (file == null || file.isEmpty()) {
@@ -97,6 +101,23 @@ public class DocumentServiceImpl implements DocumentService {
 
         documentRepository.save(toInsert);
         return true;
+    }
+
+    @Override
+    public List<Document> getAllMyDocuments() {
+        User user = loggedUserService.getUser();
+
+        return documentRepository.findAllByCaseFile_AssignedLawyer_Id(user.getId());
+    }
+
+    @Override
+    public void deleteDocument(Long id) {
+        User user = loggedUserService.getUser();
+        Optional<Document> documentToRemove =  documentRepository.findByIdAndCaseFile_AssignedLawyer_Id(id, user.getId());
+
+        if(documentToRemove.isPresent()){
+            documentRepository.deleteById(id);
+        }
     }
 
 

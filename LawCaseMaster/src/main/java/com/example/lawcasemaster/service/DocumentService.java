@@ -1,9 +1,11 @@
 package com.example.lawcasemaster.service;
 
 import com.example.lawcasemaster.model.dto.AddDocumentDTO;
+import com.example.lawcasemaster.model.entity.Document;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface DocumentService {
 
@@ -13,4 +15,8 @@ public interface DocumentService {
 
 
     boolean existDock(AddDocumentDTO data);
+
+    List<Document> getAllMyDocuments();
+
+    void deleteDocument(Long id);
 }
