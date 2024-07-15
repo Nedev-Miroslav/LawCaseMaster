@@ -67,30 +67,6 @@ public class RegistrationController {
         return "redirect:/users/login";
     }
 
-//    @PostMapping("/register")
-//    public String doRegister(
-//            @Valid UserRegistrationDTO data,
-//            BindingResult bindingResult,
-//            RedirectAttributes redirectAttributes
-//
-//    ) {
-//
-//        if(bindingResult.hasErrors() || !data.getPassword().equals(data.getConfirmPassword())) {
-//            redirectAttributes.addFlashAttribute("registerData", data);
-//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
-//
-//            return "redirect:/register";
-//
-//        }
-//
-//        boolean success = userService.register(data);
-//
-//        if(!success) {
-//            return "redirect:register";
-//        }
-//
-//        return "redirect:/login";
-//    }
 
 
 }

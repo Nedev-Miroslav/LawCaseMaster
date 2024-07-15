@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
     private final LoggedUserService loggedUserService;
 
 
-
     public UserServiceImpl(UserRepository userRepository, RoleRepository repository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, LoggedUserService loggedUserService) {
         this.userRepository = userRepository;
         this.repository = repository;
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
         this.loggedUserService = loggedUserService;
     }
-
 
     @Override
     public boolean registerUser(UserRegistrationDTO data) {
@@ -54,11 +52,8 @@ public class UserServiceImpl implements UserService {
 
     }
 
-
     @Override
     public LoggedUserProfileDTO getProfileData() {
         return modelMapper.map(loggedUserService.getUser(), LoggedUserProfileDTO.class);
     }
-
-
 }

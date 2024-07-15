@@ -15,7 +15,7 @@ public class Case extends BaseEntity{
     @Column(name = "case_number", nullable = false, unique = true)
     private String caseNumber;
 
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String description;
 
 
