@@ -30,10 +30,9 @@ public class ClientControllerIT {
     private ClientRepository clientRepository;
 
     @BeforeEach
-    public void clearDB(){
+    public void clearDB() {
         clientRepository.deleteAll();
     }
-
 
 
     @Test
@@ -57,7 +56,6 @@ public class ClientControllerIT {
     }
 
 
-
     @Test
     @WithMockUser(username = "user1", roles = {"LAWYER"})
     public void testFailAddClient() throws Exception {
@@ -75,11 +73,31 @@ public class ClientControllerIT {
         Optional<Client> clientOptional = clientRepository.findByEmail("pesho@abv.bg");
         Assertions.assertTrue(clientOptional.isEmpty());
 
-
     }
 
 
+    @Test
+    @WithMockUser(username = "user1", roles = {"LAWYER"})
+    public void testAddDuplicatedClient() throws Exception {
+
+        Client client = new Client();
+        client.setFirstName("Pesho");
+        client.setLastName("Peshov");
+        client.setEmail("pesho@abv.bg");
+        client.setPhoneNumber("0888888888");
+
+        clientRepository.save(client);
 
 
+        mockMvc.perform(post("/add-client")
+                        .param("firstName", "Pesho")
+                        .param("lastName", "Peshov")
+                        .param("email", "pesho@abv.bg")
+                        .param("phoneNumber", "0888888888")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/add-client"));
 
+
+    }
 }
