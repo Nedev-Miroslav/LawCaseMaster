@@ -72,14 +72,11 @@ public class UserServiceImplTest {
         verify(mockUserRepository).save(userCaptor.capture());
 
         User actualSavedEntity = userCaptor.getValue();
-//        actualSavedEntity.getRoles().add(mockRoleRepository.findByRoleType(RoleType.LAWYER));
-//       Role role = mockRoleRepository.findByRoleType(RoleType.LAWYER);
 
 
         Assertions.assertEquals(userRegistrationDTO.getUsername(), actualSavedEntity.getUsername());
         Assertions.assertEquals(userRegistrationDTO.getEmail(), actualSavedEntity.getEmail());
         Assertions.assertEquals(userRegistrationDTO.getPhoneNumber(), actualSavedEntity.getPhoneNumber());
-//        Assertions.assertEquals(role, actualSavedEntity.getRoles().get(0));
 
         Assertions.assertEquals(userRegistrationDTO.getPassword() + "simulateEncoding", actualSavedEntity.getPassword());
 
