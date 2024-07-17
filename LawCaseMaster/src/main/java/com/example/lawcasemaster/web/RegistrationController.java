@@ -32,6 +32,12 @@ public class RegistrationController {
         model.addAttribute("hasRegisterError");
     }
 
+    @ModelAttribute
+    public void addAttributeMissMatchPassword(Model model) {
+        model.addAttribute("missMatchPassword");
+    }
+
+
 
     @GetMapping("/register")
     public String register() {
@@ -46,13 +52,24 @@ public class RegistrationController {
             RedirectAttributes redirectAttributes
     ) {
 
-        if (bindingResult.hasErrors() || !data.getPassword().equals(data.getConfirmPassword())) {
+
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("registerData", data);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
 
             return "redirect:/users/register";
 
         }
+
+        if(!data.getPassword().equals(data.getConfirmPassword())){
+            redirectAttributes.addFlashAttribute("missMatchPassword", true);
+            redirectAttributes.addFlashAttribute("registerData", data);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
+
+            return "redirect:/users/register";
+        }
+
+
 
         boolean success = userService.registerUser(data);
 

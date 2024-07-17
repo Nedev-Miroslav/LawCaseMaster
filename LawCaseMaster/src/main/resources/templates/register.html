@@ -78,6 +78,10 @@
                         <div class="col-auto">
                             <label for="inputPassword" class="col-form-label" th:text="#{register_password}">Password</label>
                         </div>
+                        <div id="passwordError"
+                             class=" bg-danger rounded" th:if="${missMatchPassword}">Password and confirmPassword must be equal!</div>
+
+                    </div>
                         <div class="col-auto">
                             <input th:field="*{password}"
                                    th:errorclass="bg-danger"

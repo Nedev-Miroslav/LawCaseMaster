@@ -14,9 +14,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Optional;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -34,6 +34,13 @@ public class RegistrationControllerIT {
     @BeforeEach
     public void clearDB(){
         userRepository.deleteAll();
+    }
+
+    @Test
+    public void testGetRegistration() throws Exception {
+        mockMvc.perform(get("/users/register"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("register"));
     }
 
     @Test
@@ -106,6 +113,28 @@ public class RegistrationControllerIT {
 
     }
 
+    @Test
+    public void testRegisterMissMatchPassword() throws Exception {
+        User user = new User();
+        user.setUsername("testUsername");
+        user.setEmail("test@abv.bg");
+        user.setPhoneNumber("088888");
+        user.setPassword("testPassword");
+
+        userRepository.save(user);
+
+        mockMvc.perform(post("/users/register")
+                        .param("username", "testUsername")
+                        .param("email", "test@abv.bg")
+                        .param("phoneNumber", "088888")
+                        .param("password", "testPassword")
+                        .param("confirmPassword", "testPasswordDiff")
+                        .with(csrf())
+                ).andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/users/register"));
+
+
+    }
 
 
 
