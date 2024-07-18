@@ -1,10 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head}"></head>
 <body>
+<!--<div class="wrapper">-->
+<!-- Navigation -->
+<header th:replace="~{fragments/header::header}"></header>
 
+<!-- Top Container -->
+<div class="row justify-content-center ">
+    <form id="adding-form" class="w-25 rounded text-white mt-5"
+          th:method="POST"
+          th:action="@{/add-court-session}"
+          th:object="${courtSessionData}"
+    >
+
+        <h3>Add a Court Session</h3>
+        <div class="form-group">
+            <label for="inputLocation" class="col-form-label ">Location</label>
+        </div>
+        <div class="form-group">
+            <input name="location"
+
+                   type="text"
+                   id="inputLocation"
+                   class="form-control"
+                   th:field="*{location}"
+                   aria-describedby="inputLocationError">
+            <div th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="text-danger"></div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="caseNumber" class="col-form-label ">Case number</label>
+        </div>
+
+        <div class="text-danger" th:if="${courtSessionError}">There no such case number!</div>
+        <div class="form-group">
+            <input name="case-number"
+
+                   type="text"
+                   id="caseNumber"
+                   class="form-control"
+                   th:field="*{caseNumber}"
+                   aria-describedby="inputCaseNumberError">
+            <div th:if="${#fields.hasErrors('caseNumber')}" th:errors="*{caseNumber}" class="text-danger"></div>
+
+        </div>
+
+
+        <div class="form-group">
+            <div>
+                <label for="date">Day and time of the court session</label>
+            </div>
+            <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="date"
+                    th:field="*{date}"
+                    name="inputDateTime"/>
+            <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputNotes" class="col-form-label ">Notes</label>
+        </div>
+        <div class="form-group">
+                    <textarea name="notes"
+
+                              id="inputNotes"
+                              class="form-control"
+                              th:field="*{notes}"
+                              aria-describedby="inputDescriptionError"></textarea>
+        </div>
+
+
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary btn-block w-75" type="submit">Add Court Session</button>
+        </div>
+
+    </form>
+
+
+</div>
+<footer th:replace="~{fragments/footer::footer}"></footer>
 </body>
 </html>

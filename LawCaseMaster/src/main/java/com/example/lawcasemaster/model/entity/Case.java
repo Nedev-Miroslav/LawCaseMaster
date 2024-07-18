@@ -37,9 +37,13 @@ public class Case extends BaseEntity{
     @OneToMany(mappedBy = "caseFile", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Document> documents;
 
+    @OneToMany(mappedBy = "aCase", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CourtSession> courtSessions;
+
 
     public Case() {
         this.documents = new HashSet<>();
+        this.courtSessions = new HashSet<>();
     }
 
     public String getCaseNumber() {
@@ -97,4 +101,14 @@ public class Case extends BaseEntity{
     public void setDocuments(Set<Document> documents) {
         this.documents = documents;
     }
+
+    public Set<CourtSession> getCourtSessions() {
+        return courtSessions;
+    }
+
+    public void setCourtSessions(Set<CourtSession> courtSessions) {
+        this.courtSessions = courtSessions;
+
+    }
+
 }

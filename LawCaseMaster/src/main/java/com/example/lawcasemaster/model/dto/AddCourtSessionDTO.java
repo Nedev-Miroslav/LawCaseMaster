@@ -1,28 +1,21 @@
-package com.example.lawcasemaster.model.entity;
+package com.example.lawcasemaster.model.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "court_sessions")
-public class CourtSession extends BaseEntity{
-
-    @Column(nullable = false)
+public class AddCourtSessionDTO {
+    @NotNull(message = "Please enter day and time of court session!")
     private LocalDateTime date;
-
-    @Column(nullable = false)
+    @NotBlank(message = "Please enter location - court!")
     private String location;
 
-    @Column
     private String notes;
+    @NotBlank(message = "Please enter case number!")
+    private String caseNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "case_id", nullable = false)
-    private Case aCase;
-
-    public CourtSession() {
+    public AddCourtSessionDTO() {
     }
 
     public LocalDateTime getDate() {
@@ -49,11 +42,11 @@ public class CourtSession extends BaseEntity{
         this.notes = notes;
     }
 
-    public Case getaCase() {
-        return aCase;
+    public String getCaseNumber() {
+        return caseNumber;
     }
 
-    public void setaCase(Case aCase) {
-        this.aCase = aCase;
+    public void setCaseNumber(String caseNumber) {
+        this.caseNumber = caseNumber;
     }
 }
