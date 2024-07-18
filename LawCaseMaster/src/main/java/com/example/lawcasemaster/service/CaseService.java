@@ -1,7 +1,6 @@
 package com.example.lawcasemaster.service;
 
 import com.example.lawcasemaster.model.dto.AddCaseDTO;
-import com.example.lawcasemaster.model.dto.AddClientDTO;
 import com.example.lawcasemaster.model.entity.Case;
 
 import java.util.List;
