@@ -13,4 +13,7 @@ public interface CourtSessionService {
     List<CourtSession> getAllMyCourtSessions();
 
     void deleteCourtSession(Long id);
+
+    List<CourtSession> getPastSessions();
+    void deletePastSessions();
 }

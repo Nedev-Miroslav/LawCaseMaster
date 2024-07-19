@@ -11,6 +11,7 @@ import com.example.lawcasemaster.service.LoggedUserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,6 +64,16 @@ public class CourtSessionServiceImpl implements CourtSessionService {
             courtSessionRepository.deleteById(id);
         }
 
+    }
+    @Override
+    public List<CourtSession> getPastSessions() {
+        LocalDateTime now = LocalDateTime.now();
+        return courtSessionRepository.findByDateBefore(now);
+    }
+    @Override
+    public void deletePastSessions() {
+        List<CourtSession> pastSessions = getPastSessions();
+        courtSessionRepository.deleteAll(pastSessions);
     }
 
 }

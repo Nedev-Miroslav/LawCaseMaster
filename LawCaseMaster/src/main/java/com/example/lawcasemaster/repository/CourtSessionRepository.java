@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,4 +18,9 @@ public interface CourtSessionRepository extends JpaRepository<CourtSession, Long
 
   @Query("SELECT cs FROM CourtSession cs WHERE cs.id = :id AND cs.aCase.assignedLawyer.id = :id1")
   Optional<CourtSession> findByIdAndCaseFile_AssignedLawyer_Id(Long id, long id1);
+
+  List<CourtSession> findByDateBefore(LocalDateTime now);
+
+
+
 }
