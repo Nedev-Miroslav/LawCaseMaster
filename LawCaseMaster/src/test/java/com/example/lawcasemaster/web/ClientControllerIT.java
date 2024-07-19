@@ -62,6 +62,14 @@ public class ClientControllerIT {
 
     @Test
     @WithMockUser(username = "user1", roles = {"LAWYER"})
+    public void testGetAddClient() throws Exception {
+        mockMvc.perform(get("/add-client"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("add-client"));
+    }
+
+    @Test
+    @WithMockUser(username = "user1", roles = {"LAWYER"})
     public void testAddClient() throws Exception {
 
         mockMvc.perform(post("/add-client")

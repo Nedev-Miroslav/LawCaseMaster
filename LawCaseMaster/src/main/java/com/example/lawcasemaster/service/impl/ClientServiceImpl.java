@@ -50,22 +50,25 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> getAllMyClients() {
         User user = loggedUserService.getUser();
 
-       return clientRepository.findAllByUser_Id(user.getId());
+        if (user.getRoles().getFirst().getRoleType().name().equals("ADMIN")) {
+            return clientRepository.findAll();
+        }
+
+        return clientRepository.findAllByUser_Id(user.getId());
 
     }
 
     @Override
     public void deleteClient(Long id) {
         User user = loggedUserService.getUser();
-        Optional<Client> clientToRemove =  clientRepository.findByIdAndUser_id(id, user.getId());
 
-      if(clientToRemove.isPresent()){
-          clientRepository.deleteById(id);
-      }
+            Optional<Client> clientToRemove = clientRepository.findByIdAndUser_id(id, user.getId());
+
+            if (clientToRemove.isPresent() || user.getRoles().getFirst().getRoleType().name().equals("ADMIN")) {
+                clientRepository.deleteById(id);
+            }
 
     }
-
-
 
 
 }

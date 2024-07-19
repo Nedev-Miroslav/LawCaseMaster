@@ -11,23 +11,24 @@
             <thead>
             <tr>
                 <th>Location</th>
-                <th>Day and time of the court session </th>
+                <th>Day and time of the court session</th>
                 <th>Case number</th>
                 <th>Client name</th>
                 <th>Notes</th>
                 <th>Remove client</th>
             </tr>
             </thead>
-            <tbody th:each="client: ${allMyClients}">
+            <tbody th:each="courtSession: ${allMyCourtSessions}">
             <tr>
-                <td th:text="${client.firstName}">First Name</td>
-                <td th:text="${client.lastName}">Last Name</td>
-                <td th:text="${client.email}">Email</td>
-                <td th:text="${client.phoneNumber}">Phone Number</td>
+                <td th:text="${courtSession.location}">Location</td>
+                <td th:text="${courtSession.date}">Day and time of the court session</td>
+                <td th:text="${courtSession.aCase.caseNumber}">Case number</td>
+                <td th:text="${courtSession.aCase.client.firstName} + ' ' + ${courtSession.aCase.client.lastName}">Client name</td>
+                <td th:text="${courtSession.notes}">Notes</td>
                 <td>
                     <form
                             th:method="delete"
-                            th:action="@{/client/{id}(id = ${client.id})}"
+                            th:action="@{/court-sessions/{id}(id = ${courtSession.id})}"
                     >
                         <button class="btn-danger btn">Remove</button>
                     </form>

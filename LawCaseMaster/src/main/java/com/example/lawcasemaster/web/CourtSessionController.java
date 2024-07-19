@@ -6,18 +6,16 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class CourtSessionRestController {
+public class CourtSessionController {
 
     private final CourtSessionService courtSessionService;
 
 
-    public CourtSessionRestController(CourtSessionService courtSessionService) {
+    public CourtSessionController(CourtSessionService courtSessionService) {
         this.courtSessionService = courtSessionService;
     }
 
@@ -59,19 +57,34 @@ public class CourtSessionRestController {
             return "redirect:/add-court-session";
         }
 
-        return "redirect:/court-session";
+        return "redirect:/court-sessions";
 
     }
 
 
-    @GetMapping("/court-session")
+    @GetMapping("/court-sessions")
     public String getAllCourtSession(Model model) {
 
-//        model.addAttribute("allMyCases", caseService.getAllMyCases());
+        model.addAttribute("allMyCourtSessions", courtSessionService.getAllMyCourtSessions());
 
         return "court-sessions";
     }
 
+    @DeleteMapping("/court-sessions/{id}")
+    public String deleteCourtSession(@PathVariable("id") Long id) {
+
+        courtSessionService.deleteCourtSession(id);
+
+        return "redirect:/court-sessions";
+    }
 
 
+//    @DeleteMapping("/documents/{id}")
+//
+//    public String deleteDocument(@PathVariable("id") Long id) {
+//
+//        documentService.deleteDocument(id);
+//
+//        return "redirect:/documents";
+//    }
 }
