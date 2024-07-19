@@ -65,17 +65,4 @@ public class CourtSessionServiceImpl implements CourtSessionService {
 
     }
 
-
-
-//        @Override
-//    public void deleteDocument(Long id) {
-//        User user = loggedUserService.getUser();
-//        Optional<Document> documentToRemove =  documentRepository.findByIdAndCaseFile_AssignedLawyer_Id(id, user.getId());
-//
-//        if(documentToRemove.isPresent()){
-//            documentRepository.deleteById(id);
-//        }
-//    }
-
-
 }
