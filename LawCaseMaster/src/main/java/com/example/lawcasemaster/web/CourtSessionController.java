@@ -79,12 +79,4 @@ public class CourtSessionController {
     }
 
 
-//    @DeleteMapping("/documents/{id}")
-//
-//    public String deleteDocument(@PathVariable("id") Long id) {
-//
-//        documentService.deleteDocument(id);
-//
-//        return "redirect:/documents";
-//    }
 }

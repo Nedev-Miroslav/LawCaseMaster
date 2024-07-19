@@ -1,7 +1,9 @@
 package com.example.lawcasemaster.service.impl;
 
 import com.example.lawcasemaster.model.entity.Client;
+import com.example.lawcasemaster.model.entity.Role;
 import com.example.lawcasemaster.model.entity.User;
+import com.example.lawcasemaster.model.enums.RoleType;
 import com.example.lawcasemaster.repository.ClientRepository;
 import com.example.lawcasemaster.service.LoggedUserService;
 import org.junit.jupiter.api.Assertions;
@@ -47,6 +49,9 @@ public class ClientServiceImplTest {
     void testGetAllMyClients() {
         User user = new User();
         user.setId(1L);
+        Role role = new Role();
+        role.setRoleType(RoleType.LAWYER);
+        user.getRoles().add(role);
 
         when(mockLoggedUserService.getUser()).thenReturn(user);
 

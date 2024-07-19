@@ -45,7 +45,7 @@
                 <a th:href="@{profile}" th:text="#{nav_bar_profile}">Profile</a>
             </li>
             <li sec:authorize="hasRole('ADMIN')">
-                <a href="/" th:text="#{nav_bar_admin}">Admin</a>
+                <a th:href="@{admin}" th:text="#{nav_bar_admin}">Admin</a>
             </li>
             <li sec:authorize="isAnonymous()">
                 <a th:href="@{users/login}" th:text="#{nav_bar_login}">Login</a>

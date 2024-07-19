@@ -1,0 +1,40 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Role</th>
+                <th>Users</th>
+
+                <th>Phone Number</th>
+                <th>Email</th>
+
+            </tr>
+            </thead>
+            <tbody th:each="user: ${allUsers}">
+            <tr>
+                <td th:text="${user.roles.get(0).getRoleType().name()}">User</td>
+                <td th:text="${user.username}">Role</td>
+                <td th:text="${user.phoneNumber}">Phone Number</td>
+                <td th:text="${user.email}">Email</td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+</html>
