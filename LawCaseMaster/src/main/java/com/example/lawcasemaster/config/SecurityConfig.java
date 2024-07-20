@@ -1,5 +1,6 @@
 package com.example.lawcasemaster.config;
 
+import com.example.lawcasemaster.model.enums.RoleType;
 import com.example.lawcasemaster.repository.UserRepository;
 import com.example.lawcasemaster.service.LawCaseMasterUserDetailsService;
 import com.example.lawcasemaster.service.impl.LawCaseMasterUserDetailsServiceImpl;
@@ -23,6 +24,7 @@ public class SecurityConfig {
                                 authorizeRequests
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about").permitAll()
+                                        .requestMatchers("/admin").hasRole(RoleType.ADMIN.name())
                                         .anyRequest()
                                         .authenticated()
 
