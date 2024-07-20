@@ -6,8 +6,9 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
+    <h1 class="border-bottom">All Clients</h1>
     <div>
-            <table class="table">
+        <table class="table">
             <thead>
             <tr>
                 <th>First name</th>
@@ -25,8 +26,8 @@
                 <td th:text="${client.phoneNumber}">Phone Number</td>
                 <td>
                     <form
-                    th:method="delete"
-                    th:action="@{/client/{id}(id = ${client.id})}"
+                            th:method="delete"
+                            th:action="@{/client/{id}(id = ${client.id})}"
                     >
                         <button class="btn-danger btn">Remove</button>
                     </form>
@@ -35,6 +36,9 @@
             </tbody>
         </table>
 
+        <div class="d-flex justify-content-center mt-4">
+            <a class="btn" th:href="@{add-client}">Add Client</a>
+        </div>
     </div>
 </div>
 <!-- Wrapper Ends -->
