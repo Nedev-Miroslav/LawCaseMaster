@@ -18,9 +18,14 @@
             </div>
         </div>
         <div class="top-box top-box-a">
-            <h4>Времето в София</h4>
-            <h4><span id="box-a-temp">15</span><span>&#8451;</span></h4>
-            <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
+
+            <a th:href="@{courts}" class="btn col-md-12">
+                <h4 th:text="#{index_courts}">Courts</h4>
+                <img id="courts-img" src="/images/courts.png" alt="">
+            </a>
+
+
+
         </div>
         <div class="top-box top-box-b">
             <a th:href="@{add-document}" class="btn col-md-12">

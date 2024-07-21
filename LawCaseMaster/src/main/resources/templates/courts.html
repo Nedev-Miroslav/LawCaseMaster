@@ -1,0 +1,45 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head::head}"></head>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header th:replace="~{fragments/header::header}"></header>
+    <h1 class="border-bottom">Courts Coordinate</h1>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: '/api/courts',
+                method: 'GET',
+                success: function(data) {
+                    const tableBody = $('#courtsTable tbody');
+                    tableBody.empty();
+                    data.forEach(function(court) {
+                        const row = '<tr>' +
+                            '<td>' + court.name + '</td>' +
+                            '<td>' + court.address + '</td>' +
+                            '<td>' + court.phoneNumber + '</td>' +
+                            '</tr>';
+                        tableBody.append(row);
+                    });
+                }
+            });
+        });
+    </script>
+
+
+<table id="courtsTable" class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</div>
+</body>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+</html>
