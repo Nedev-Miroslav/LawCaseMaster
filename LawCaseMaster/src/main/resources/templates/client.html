@@ -6,16 +6,16 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">All Clients</h1>
+    <h1 class="border-bottom" th:text="#{all_clients}">All Clients</h1>
     <div>
         <table class="table">
             <thead>
             <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-                <th>Phone number</th>
-                <th>Remove client</th>
+                <th th:text="#{add_client_first_name}">First name</th>
+                <th th:text="#{add_client_last_name}">Last name</th>
+                <th th:text="#{email}">Email</th>
+                <th th:text="#{phone_number}">Phone number</th>
+                <th th:text="#{remove_client}">Remove client</th>
             </tr>
             </thead>
             <tbody th:each="client: ${allMyClients}">
@@ -29,7 +29,7 @@
                             th:method="delete"
                             th:action="@{/client/{id}(id = ${client.id})}"
                     >
-                        <button class="btn-danger btn">Remove</button>
+                        <button class="btn-danger btn" th:text="#{remove}">Remove</button>
                     </form>
                 </td>
             </tr>
@@ -37,7 +37,7 @@
         </table>
 
         <div class="d-flex justify-content-center mt-4">
-            <a class="btn" th:href="@{add-client}">Add Client</a>
+            <a class="btn" th:href="@{add-client}" th:text="#{add_client_btn}">Add Client</a>
         </div>
     </div>
 </div>

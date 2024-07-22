@@ -15,11 +15,11 @@
        >
 
 
-    <h3>Add a new client</h3>
+    <h3 th:text="#{add_new_client}">Add a new client</h3>
     <div class="text-danger" th:if="${clientError}">Client has already been added by you or your colleague!</div>
     <div>
       <div class="form-group">
-        <label for="firstName" class="col-form-label ">First name</label>
+        <label for="firstName" class="col-form-label" th:text="#{add_client_first_name}">First name</label>
       </div>
       <div class="form-group">
         <input name="name"
@@ -36,7 +36,7 @@
 
     <div>
       <div class="form-group">
-        <label for="lastName" class="col-form-label ">Last name</label>
+        <label for="lastName" class="col-form-label" th:text="#{add_client_last_name}">Last name</label>
       </div>
       <div class="form-group">
         <input name="name"
@@ -53,7 +53,7 @@
 
     <div>
       <div class="form-group">
-        <label for="email" class="col-form-label ">Email</label>
+        <label for="email" class="col-form-label" th:text="#{email}">Email</label>
       </div>
       <div class="form-group">
         <input name="name"
@@ -70,7 +70,7 @@
 
     <div>
       <div class="form-group">
-        <label for="phoneNumber" class="col-form-label ">Phone number</label>
+        <label for="phoneNumber" class="col-form-label" th:text="#{phone_number}">Phone number</label>
       </div>
       <div class="form-group">
         <input name="name"
@@ -87,7 +87,7 @@
 
 
     <div class="d-flex justify-content-center mt-4">
-      <button class="btn btn-primary btn-block w-50" type="submit">Add Client</button>
+      <button class="btn btn-primary btn-block w-50" type="submit" th:text="#{add_client_btn}">Add Client</button>
     </div>
 
   </form>
