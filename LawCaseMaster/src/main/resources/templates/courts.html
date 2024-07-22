@@ -5,7 +5,7 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">Courts Coordinate</h1>
+    <h1 class="border-bottom" th:text="#{index_courts}">Courts</h1>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -32,9 +32,9 @@
 <table id="courtsTable" class="table">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Phone Number</th>
+        <th th:text="#{name}">Name</th>
+        <th th:text="#{address}">Address</th>
+        <th th:text="#{phone_number}">Phone Number</th>
     </tr>
     </thead>
     <tbody></tbody>

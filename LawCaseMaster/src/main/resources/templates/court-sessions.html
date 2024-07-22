@@ -6,23 +6,23 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">All Court Sessions</h1>
+    <h1 class="border-bottom" th:text="#{all_court_session}">All Court Sessions</h1>
     <div>
         <table class="table">
             <thead>
             <tr>
-                <th>Location</th>
-                <th>Day and time of the court session</th>
-                <th>Case number</th>
-                <th>Client name</th>
-                <th>Notes</th>
-                <th>Remove client</th>
+                <th th:text="#{location}">Location</th>
+                <th th:text="#{day_and_time}">Day and time of the court session</th>
+                <th th:text="#{case_number}">Case number</th>
+                <th th:text="#{name_client}">Client name</th>
+                <th th:text="#{notes}">Notes</th>
+                <th th:text="#{remove_court_session}">Remove court session</th>
             </tr>
             </thead>
             <tbody th:each="courtSession: ${allMyCourtSessions}">
             <tr>
                 <td th:text="${courtSession.location}">Location</td>
-                <td th:text="${courtSession.date}">Day and time of the court session</td>
+                <td th:text="${#temporals.format(courtSession.date, 'dd-MM-yyyy HH:mm')}">Day and time of the court session</td>
                 <td th:text="${courtSession.aCase.caseNumber}">Case number</td>
                 <td th:text="${courtSession.aCase.client.firstName} + ' ' + ${courtSession.aCase.client.lastName}">Client name</td>
                 <td th:text="${courtSession.notes}">Notes</td>
@@ -31,14 +31,14 @@
                             th:method="delete"
                             th:action="@{/court-sessions/{id}(id = ${courtSession.id})}"
                     >
-                        <button class="btn-danger btn">Remove</button>
+                        <button class="btn-danger btn" th:text="#{remove}">Remove</button>
                     </form>
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-center mt-4 ">
-            <a class="btn" th:href="@{add-court-session}">Add Court Session</a>
+            <a class="btn" th:href="@{add-court-session}" th:text="#{add_court_session_bnt}">Add court session</a>
         </div>
     </div>
 </div>
