@@ -6,17 +6,17 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">All Documents</h1>
+    <h1 class="border-bottom" th:text="#{all_documents}">All Documents</h1>
     <div>
         <table class="table">
             <thead>
             <tr>
-                <th>Document name</th>
-                <th>Incoming number</th>
-                <th>Case number</th>
-                <th>Case Client</th>
-                <th>Document</th>
-                <th>Remove document</th>
+                <th th:text="#{document_name}">Document name</th>
+                <th th:text="#{incoming_number}">Incoming number</th>
+                <th th:text="#{case_number}">Case number</th>
+                <th th:text="#{client_in_the_case}">Client in the case</th>
+                <th th:text="#{document}">Document</th>
+                <th th:text="#{remove_document}">Remove document</th>
 
             </tr>
             </thead>
@@ -25,11 +25,11 @@
                 <td th:text="${document.name}">Document number</td>
                 <td th:text="${document.incomingNumber}">Incoming number</td>
                 <td th:text="${document.caseFile.caseNumber}">Case number</td>
-                <td th:text="${document.caseFile.client.firstName} + ' ' + ${document.caseFile.client.lastName}">Client name</td>
+                <td th:text="${document.caseFile.client.firstName} + ' ' + ${document.caseFile.client.lastName}">Client in the case</td>
                 <td>
                     <form th:action="@{/download-document}" method="get">
                         <input type="hidden" name="filePath" th:value="${document.addDocument}" />
-                        <button type="submit" class="btn btn-primary">Download</button>
+                        <button type="submit" class="btn btn-primary" th:text="#{download}">Download</button>
                     </form>
                 </td>
                 <td>
@@ -37,14 +37,14 @@
                             th:method="delete"
                             th:action="@{/documents/{id}(id = ${document.id})}">
 
-                        <button class="btn-danger btn">Remove</button>
+                        <button class="btn-danger btn" th:text="#{remove}">Remove</button>
                     </form>
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-center mt-4 ">
-            <a class="btn" th:href="@{add-document}">Add Document</a>
+            <a class="btn" th:href="@{add-document}" th:text="#{add_document_btn}">Add document</a>
         </div>
     </div>
 </div>
