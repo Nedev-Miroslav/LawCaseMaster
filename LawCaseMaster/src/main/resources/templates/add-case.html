@@ -15,11 +15,11 @@
     >
         <!--          enctype="multipart/form-data">-->
 
-        <h3>Add a new case</h3>
+        <h3 th:text="#{add_new_case}">Add a new case</h3>
         <div class="text-danger" th:if="${caseError}">Case has already been added by you or your colleague!</div>
         <div>
             <div class="form-group">
-                <label for="inputName" class="col-form-label ">Case number</label>
+                <label for="inputName" class="col-form-label" th:text="#{case_number}">Case number</label>
             </div>
             <div class="form-group">
                 <input name="name"
@@ -36,7 +36,7 @@
 
         <div>
             <div class="form-group">
-                <label for="inputDescription" class="col-form-label ">Description</label>
+                <label for="inputDescription" class="col-form-label" th:text="#{description}">Description</label>
             </div>
             <div class="form-group">
                     <textarea name="description"
@@ -51,7 +51,7 @@
         <div>
             <div class="text-danger" th:if="${missClient}">There no such client added!</div>
             <div class="form-group">
-                <label for="clientEmail" class="col-form-label ">Client's email</label>
+                <label for="clientEmail" class="col-form-label" th:text="#{clients_email}" >Client's email</label>
             </div>
             <div class="form-group">
 
@@ -69,7 +69,7 @@
 
         <div class="form-group">
             <div>
-                <label for="inputDate">Creation date</label>
+                <label for="inputDate" th:text="#{creation_date}">Creation date</label>
             </div>
             <input
                     type="date"
@@ -81,36 +81,20 @@
         <div th:if="${#fields.hasErrors('createdAt')}" th:errors="*{createdAt}" class="text-danger"></div>
         <div>
             <div class="form-group">
-                <label for="caseType">Case Type</label>
+                <label for="caseType" th:text="#{case_type}">Case type</label>
                 <select
                         id="caseType"
                         class="custom-select"
                         th:field="*{caseType}">
-                    <option value="Case Type" selected>Select Case type</option>
+                    <option value="Case Type" selected th:text="#{select_type}">Select case type</option>
                     <option th:each="caseType: ${caseTypes}" th:value="${caseType}" th:text="${caseType}">Case type
                     </option>
                 </select>
             </div>
         </div>
 
-        <!--        <div>-->
-        <!--            <div class="form-group">-->
-        <!--                <label for="documents" class="col-form-label ">Documents</label>-->
-        <!--            </div>-->
-        <!--            <div class="form-group">-->
-        <!--                <input type="file" name="documents"-->
-        <!--                       required-->
-        <!--                       id="documents"-->
-        <!--                       class="form-control-file"-->
-        <!--                       aria-describedby="inputDocuments">-->
-        <!--                <small id="inputDocumentError"-->
-        <!--                       class="invalid-feedback  form-text bg-danger rounded">Must be valid Document</small>-->
-        <!--            </div>-->
-
-        <!--        </div>-->
-
         <div class="d-flex justify-content-center mt-4">
-            <button class="btn btn-primary btn-block w-50" type="submit">Add Case</button>
+            <button class="btn btn-primary btn-block w-50" type="submit" th:text="#{add_case_btn}">Add case</button>
         </div>
 
     </form>

@@ -6,17 +6,17 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">All Cases</h1>
+    <h1 class="border-bottom" th:text="#{all_cases}">All Cases</h1>
     <div>
         <table class="table">
             <thead>
             <tr>
-                <th>Case number</th>
-                <th>Case type</th>
-                <th>Created at</th>
-                <th>Description</th>
-                <th>Client name</th>
-                <th>Remove client</th>
+                <th th:text="#{case_number}">Case number</th>
+                <th th:text="#{case_type}">Case type</th>
+                <th th:text="#{creation_date}">Created at</th>
+                <th th:text="#{description}">Description</th>
+                <th th:text="#{name_client}">Client name</th>
+                <th th:text="#{remove_case}">Remove case</th>
             </tr>
             </thead>
             <tbody th:each="case: ${allMyCases}">
@@ -32,14 +32,14 @@
                             th:method="delete"
                             th:action="@{/cases/{id}(id = ${case.id})}">
 
-                        <button class="btn-danger btn">Remove</button>
+                        <button class="btn-danger btn" th:text="#{remove}">Remove</button>
                     </form>
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="d-flex justify-content-center mt-4 ">
-            <a class="btn" th:href="@{add-case}">Add Case</a>
+            <a class="btn" th:href="@{add-case}" th:text="#{add_case_btn}">Add case</a>
         </div>
     </div>
 </div>
