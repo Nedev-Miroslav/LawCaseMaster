@@ -1,8 +1,8 @@
 <header xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
     <div class="firstCont">
-        <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
-
-
+        <div>
+        <a class="navbar-brand" th:href="@{index}"><img alt="logo" src="/images/logo.png" class="logo"></a>
+        </div>
         <div class="container" >
             <div class="row justify-content-lg-end">
                 <div class="col-md-3 language-form">
@@ -23,7 +23,6 @@
 
                 <span class="text-white bold left-space">
                     <a class="profile-link" th:href="@{profile}"><th:block sec:authorize="isAuthenticated()" sec:authentication="name"></th:block></a>
-<!--                <th:block sec:authorize="isAnonymous()">Anonymous</th:block>-->
                 </span>
             </div>
         </div>
@@ -31,10 +30,6 @@
     </div>
     <nav class="main-nav">
         <ul>
-
-            <!--      <li>-->
-            <!--        <a href="/">Home</a>-->
-            <!--      </li>-->
             <li>
                 <a th:href="@{add-client}" th:text="#{nav_bar_add_client}">Add Client</a>
             </li>

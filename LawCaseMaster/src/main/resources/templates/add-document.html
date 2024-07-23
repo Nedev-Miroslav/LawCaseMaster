@@ -15,8 +15,8 @@
          enctype="multipart/form-data">
 
         <h3 th:text="#{add_new_document}">Add a new document</h3>
-        <div class="text-danger" th:if="${existDocument}">Document has already been added by you or your colleague!</div>
-        <div class="text-danger" th:if="${missCase}">There is not such case number</div>
+        <div class="text-danger" th:if="${existDocument}" th:text="#{already_added_document}">The document has already been added by you or your colleague!</div>
+        <div class="text-danger" th:if="${missCase}" th:text="#{no_added_case}">There is no such case number</div>
         <div>
             <div class="form-group">
                 <label for="documentName" class="col-form-label" th:text="#{document_name}">Document name</label>

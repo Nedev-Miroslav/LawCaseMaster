@@ -16,7 +16,7 @@
         <!--          enctype="multipart/form-data">-->
 
         <h3 th:text="#{add_new_case}">Add a new case</h3>
-        <div class="text-danger" th:if="${caseError}">Case has already been added by you or your colleague!</div>
+        <div class="text-danger" th:if="${caseError}" th:text="#{already_added_case}">The case has already been added by you or your colleague!</div>
         <div>
             <div class="form-group">
                 <label for="inputName" class="col-form-label" th:text="#{case_number}">Case number</label>
@@ -49,9 +49,9 @@
         </div>
 
         <div>
-            <div class="text-danger" th:if="${missClient}">There no such client added!</div>
+            <div class="text-danger" th:if="${missClient}" th:text="#{no_added_client}">There no such client added!</div>
             <div class="form-group">
-                <label for="clientEmail" class="col-form-label" th:text="#{clients_email}" >Client's email</label>
+                <label for="clientEmail" class="col-form-label" th:text="#{clients_email}">Client's email</label>
             </div>
             <div class="form-group">
 

@@ -16,7 +16,7 @@
 
 
     <h3 th:text="#{add_new_client}">Add a new client</h3>
-    <div class="text-danger" th:if="${clientError}">Client has already been added by you or your colleague!</div>
+    <div class="text-danger" th:if="${clientError}" th:text="#{already_added_client}">The client has already been added by you or your colleague!</div>
     <div>
       <div class="form-group">
         <label for="firstName" class="col-form-label" th:text="#{add_client_first_name}">First name</label>

@@ -7,20 +7,20 @@ import jakarta.validation.constraints.Size;
 
 public class UserRegistrationDTO {
     @NotEmpty(message = "")
-    @Size(min = 5, max = 30, message = "Username length must be between 5 and 30 characters!")
+    @Size(min = 5, max = 30, message = "{username.length}")
     private String username;
 
-    @NotBlank(message = "Please enter email!")
+    @NotBlank(message = "{email.enter}")
     @Email
     private String email;
 
-    @NotEmpty(message = "Please enter valid phone number!")
+    @NotEmpty(message = "{valid.phone.number}")
     private String phoneNumber;
     @NotEmpty(message = "")
-    @Size(min = 5, max = 30, message = "Password length must be between 5 and 30 characters!")
+    @Size(min = 5, max = 30, message = "{password.length}")
     private String password;
     @NotEmpty(message = "")
-    @Size(min = 5, max = 30, message = "Confirm Password length must be between 5 and 30 characters!")
+    @Size(min = 5, max = 30, message = "{confirm.password.length}")
     private String confirmPassword;
 
     public UserRegistrationDTO() {

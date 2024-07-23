@@ -2,6 +2,24 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="~{fragments/head::head}"></head>
+<div class="firstCont">
+    <div>
+    <a class="navbar-brand" href="/"><img alt="logo" src="/images/logo.png" class="logo"></a>
+    </div>
+    <div class="container" >
+        <div class="row justify-content-lg-end">
+            <div class="col-md-3 language-form">
+                <form th:method="get">
+                    <label class="text-dark bold" for="lang" th:text="#{nav_bar_language}">Language</label>
+                    <select id="lang" name="lang" class="custom-select" onchange="this.form.submit()">
+                        <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                        <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <h1 class="    border-bottom mb-5" th:text="#{nav_bar_login}">Login</h1>
@@ -15,7 +33,6 @@
                     th:object="${loginData}"
             >
 
-<!--                <div th:each="error: ${#fields.errors()}" th:text="${error}" class="danger">Error messages</div>-->
                 <div>
                 <div class=" bg-danger rounded"  th:if="${showError}" th:text="#{incorrect_username_or_password}">Incorrect username or password!</div>
 
@@ -28,7 +45,7 @@
                                 th:errorclass="bg-danger"
                                 type="text"
                                 name="username"
-                                required minlength="5" maxlength="30"
+                                required
                                 id="inputUsername"
                                 class="form-control"
                                 aria-describedby="usernameHelpInline">
@@ -46,7 +63,7 @@
                                 th:errorclass="bg-danger"
                                 type="password"
                                 name="password"
-                                required minlength="5" maxlength="30"
+                                required
                                 id="inputPassword" class="form-control"
                                 aria-describedby="passwordHelpInline">
 
@@ -61,6 +78,5 @@
 
     </div>
 </main>
-<!--<footer th:replace="~{fragments/footer::footer}"></footer>-->
 </body>
 </html>
