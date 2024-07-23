@@ -17,7 +17,7 @@
 
 <!--                <div th:each="error: ${#fields.errors()}" th:text="${error}" class="danger">Error messages</div>-->
                 <div>
-                <div class=" bg-danger rounded"  th:if="${showError}" >Incorrect username or password!</div>
+                <div class=" bg-danger rounded"  th:if="${showError}" th:text="#{incorrect_username_or_password}">Incorrect username or password!</div>
 
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label" th:text="#{register_username}">Username</label>

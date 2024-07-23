@@ -32,8 +32,7 @@
                         >Username length must be between 5 and 30 characters
                         </div>
                         <div id="usernameUniqueError"
-                               class=" bg-danger rounded" th:if="${hasRegisterError}">Username is already
-                            occupied</div>
+                               class=" bg-danger rounded" th:if="${hasRegisterError}" th:text="#{occupied_username}">Username is already occupied</div>
 
                     </div>
                 </div>
@@ -79,7 +78,7 @@
                             <label for="inputPassword" class="col-form-label" th:text="#{register_password}">Password</label>
                         </div>
                         <div id="passwordError"
-                             class=" bg-danger rounded" th:if="${missMatchPassword}">Password and confirmPassword must be equal!</div>
+                             class=" bg-danger rounded" th:if="${missMatchPassword}" th:text="#{not_match_pass}">Password and confirmPassword must be equal!</div>
 
                     </div>
                         <div class="col-auto">
