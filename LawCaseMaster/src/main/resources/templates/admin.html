@@ -6,17 +6,16 @@
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="~{fragments/header::header}"></header>
-    <h1 class="border-bottom">All Registered Users</h1>
+    <h1 class="border-bottom" th:text="#{admins_all_users}">All registered users</h1>
 
     <div>
         <table class="table">
             <thead>
             <tr>
-                <th>Role</th>
-                <th>Users</th>
-
-                <th>Phone Number</th>
-                <th>Email</th>
+                <th th:text="#{role}">Role</th>
+                <th th:text="#{users}">Users</th>
+                <th th:text="#{phone_number}">Phone number</th>
+                <th th:text="#{email}">Email</th>
 
             </tr>
             </thead>
@@ -26,8 +25,6 @@
                 <td th:text="${user.username}">Role</td>
                 <td th:text="${user.phoneNumber}">Phone Number</td>
                 <td th:text="${user.email}">Email</td>
-
-
 
             </tr>
             </tbody>
