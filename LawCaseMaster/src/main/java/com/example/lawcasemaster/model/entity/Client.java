@@ -1,6 +1,5 @@
 package com.example.lawcasemaster.model.entity;
 
-import com.example.lawcasemaster.model.enums.CaseType;
 import jakarta.persistence.*;
 
 import java.util.List;

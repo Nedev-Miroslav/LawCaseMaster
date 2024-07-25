@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class PerformanceAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(PerformanceAspect.class);
-    private static final long THRESHOLD = 1000; // праг в милисекунди (тук: 1 секунда)
+    private static final long THRESHOLD = 1000;
 
     @Around("execution(* com.example.lawcasemaster..*(..))")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {

@@ -15,4 +15,3 @@ public interface CourtRepository extends JpaRepository<Court, Long> {
     List<Court> findAll();
 
 }
-// @Query("SELECT cs FROM CourtSession cs WHERE cs.aCase.assignedLawyer.id = :lawyerId ORDER BY cs.date")

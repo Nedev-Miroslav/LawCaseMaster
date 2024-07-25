@@ -60,7 +60,6 @@ public class DocumentServiceImpl implements DocumentService {
 
 
         if (file == null || file.isEmpty()) {
-           // throw new IllegalArgumentException("File is empty!");
             return false;
         }
 
@@ -70,7 +69,6 @@ public class DocumentServiceImpl implements DocumentService {
         if (originalFilename != null && originalFilename.contains(".")) {
             extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
         } else {
-//            throw new IllegalArgumentException("No such customer added!");
             return false;
         }
 

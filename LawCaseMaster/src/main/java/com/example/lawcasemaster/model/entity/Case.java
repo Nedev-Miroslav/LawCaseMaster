@@ -3,7 +3,6 @@ package com.example.lawcasemaster.model.entity;
 import com.example.lawcasemaster.model.enums.CaseType;
 import jakarta.persistence.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;

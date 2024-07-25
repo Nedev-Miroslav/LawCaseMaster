@@ -22,10 +22,4 @@ public class MainController {
     }
 
 
-
-//
-//    @GetMapping("/add-court-session")
-//    public String dada() {
-//     return "add-court-session";
-//    }
 }

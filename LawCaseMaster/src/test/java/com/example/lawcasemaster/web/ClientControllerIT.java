@@ -129,36 +129,6 @@ public class ClientControllerIT {
     }
 
 
-//    @Test
-//    @WithMockUser(username = "user1", roles = {"LAWYER"})
-//    public void testGetAllClients() throws Exception {
-//        testUser.getRoles().add(role);
-//        Client client1 = new Client();
-//        client1.setFirstName("Pesho");
-//        client1.setLastName("Peshov");
-//        client1.setEmail("pesho1@abv.bg");
-//        client1.setPhoneNumber("0888888888");
-//        client1.setUser(testUser);
-//        clientRepository.save(client1);
-//
-//        Client client2 = new Client();
-//        client2.setFirstName("Gosho");
-//        client2.setLastName("Goshov");
-//        client2.setEmail("gosho@abv.bg");
-//        client2.setPhoneNumber("0777777777");
-//        client2.setUser(testUser);
-//        clientRepository.save(client2);
-//
-//
-//
-//        mockMvc.perform(get("/client"))
-//                .andExpect(status().isOk())
-//              .andExpect(view().name("client"));
-//
-//
-//
-//    }
-
     @Test
     @WithMockUser(username = "user1", roles = {"LAWYER"})
     public void testDeleteClient() throws Exception {

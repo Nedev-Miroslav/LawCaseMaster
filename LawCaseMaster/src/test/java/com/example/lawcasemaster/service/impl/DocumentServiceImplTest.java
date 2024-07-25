@@ -111,15 +111,12 @@ public class DocumentServiceImplTest {
         Document documentToInsert = new Document();
         when(modelMapper.map(data, Document.class)).thenReturn(documentToInsert);
 
-        // Мокираме създаването на директория и пътя на файла
         Path tempDir = Files.createTempDirectory("uploads");
         Path destinationFile = tempDir.resolve(UUID.randomUUID().toString() + ".pdf");
 
-        // Мокираме InputStream на файла
         InputStream inputStream = mock(InputStream.class);
         when(file.getInputStream()).thenReturn(inputStream);
 
-        // Създаваме файла на мока
         Files.copy(inputStream, destinationFile);
 
         boolean result = documentService.createDocument(data, file);
@@ -127,7 +124,6 @@ public class DocumentServiceImplTest {
         Assertions.assertTrue(result);
         verify(documentRepository).save(any(Document.class));
 
-        // Изтриваме тестовата директория след теста
         Files.deleteIfExists(destinationFile);
         Files.deleteIfExists(tempDir);
     }

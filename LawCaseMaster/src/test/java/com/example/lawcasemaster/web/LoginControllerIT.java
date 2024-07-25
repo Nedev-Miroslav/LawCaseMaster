@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(classes = LawCaseMasterApplication.class) // Зареждам целия контекст на Spring Boot с основния клас на приложението
+@SpringBootTest(classes = LawCaseMasterApplication.class)
 @AutoConfigureMockMvc
 public class LoginControllerIT {
 

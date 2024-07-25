@@ -1,7 +1,6 @@
 package com.example.lawcasemaster.web;
 
 import com.example.lawcasemaster.model.dto.AddCaseDTO;
-import com.example.lawcasemaster.model.dto.AddClientDTO;
 import com.example.lawcasemaster.model.enums.CaseType;
 import com.example.lawcasemaster.service.CaseService;
 import jakarta.validation.Valid;
