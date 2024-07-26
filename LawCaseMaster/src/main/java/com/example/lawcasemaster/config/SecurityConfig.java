@@ -34,12 +34,12 @@ public class SecurityConfig {
 
                 )
                 .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Конфигурация на CSRF защитата
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )
                 .cors(cors -> {
             cors.configurationSource(request -> {
                 var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-                corsConfiguration.setAllowedOrigins(List.of("http://localhost:8080")); // Променете с вашия фронтенд домейн
+                corsConfiguration.setAllowedOrigins(List.of("http://localhost:8080"));
                 corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 corsConfiguration.setAllowCredentials(true);
                 corsConfiguration.setAllowedHeaders(List.of("*"));
