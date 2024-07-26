@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import java.util.List;
 
 @Configuration
 public class SecurityConfig {
@@ -24,11 +27,25 @@ public class SecurityConfig {
                                 authorizeRequests
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error", "/about").permitAll()
+                                        .requestMatchers("/api/**").permitAll()
                                         .requestMatchers("/admin").hasRole(RoleType.ADMIN.name())
                                         .anyRequest()
                                         .authenticated()
 
                 )
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Конфигурация на CSRF защитата
+                )
+                .cors(cors -> {
+            cors.configurationSource(request -> {
+                var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
+                corsConfiguration.setAllowedOrigins(List.of("http://localhost:8080")); // Променете с вашия фронтенд домейн
+                corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                corsConfiguration.setAllowCredentials(true);
+                corsConfiguration.setAllowedHeaders(List.of("*"));
+                return corsConfiguration;
+            });
+        })
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/users/login")

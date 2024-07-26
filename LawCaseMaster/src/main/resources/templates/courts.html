@@ -8,38 +8,114 @@
     <h1 class="border-bottom" th:text="#{index_courts}">Courts</h1>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
+        // Глобални променливи за CSRF токените
+        let csrfToken;
+        let csrfHeader;
+
         $(document).ready(function() {
+            // Вземане на CSRF токен от мета таговете след зареждане на DOM
+            csrfToken = $('meta[name="_csrf"]').attr('content');
+            csrfHeader = $('meta[name="_csrf_header"]').attr('content');
+
+            // Fetch all courts on page load
             $.ajax({
                 url: '/api/courts',
                 method: 'GET',
                 success: function(data) {
-                    const tableBody = $('#courtsTable tbody');
+                    let tableBody = $('#courtsTable tbody');
                     tableBody.empty();
                     data.forEach(function(court) {
-                        const row = '<tr>' +
+                        let row = '<tr id="court-' + court.id + '">' +
                             '<td>' + court.name + '</td>' +
                             '<td>' + court.address + '</td>' +
                             '<td>' + court.phoneNumber + '</td>' +
+                            '<td><button class="btn-danger btn" onclick="deleteCourt(' + court.id + ')">Remove</button></td>' +
                             '</tr>';
                         tableBody.append(row);
                     });
+                },
+                error: function(error) {
+                    console.log("Error fetching courts: ", error);
                 }
             });
+
+            // Add court on form submit
+
+            $('#addCourtForm').on('submit', function(event) {
+                event.preventDefault();
+                let courtData = {
+                    name: $('#name').val(),
+                    address: $('#address').val(),
+                    phoneNumber: $('#phoneNumber').val()
+                };
+
+                $.ajax({
+                    url: '/api/courts',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(courtData),
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader(csrfHeader, csrfToken);
+                    },
+                    success: function(data) {
+                        // Clear form fields after successful addition
+                        $('#name').val('');
+                        $('#address').val('');
+                        $('#phoneNumber').val('');
+                        // Optionally refresh the courts table
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.log("Error adding court: ", error);
+                    }
+                });
+            });
         });
+
+        // Delete court function
+        function deleteCourt(id) {
+            $.ajax({
+                url: '/api/courts/' + id,
+                method: 'DELETE',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader(csrfHeader, csrfToken);
+                },
+                success: function() {
+                    location.reload();
+                },
+                error: function(error) {
+                    console.log("Error deleting court: ", error);
+                }
+            });
+        }
     </script>
-
-
-<table id="courtsTable" class="table">
-    <thead>
-    <tr>
-        <th th:text="#{name}">Name</th>
-        <th th:text="#{address}">Address</th>
-        <th th:text="#{phone_number}">Phone Number</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    </head>
+    <body>
+     <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+     <div  class="row justify-content-center ">
+    <form id="addCourtForm">
+        <input type="text" id="name" class="col-form-label" name="name" placeholder="Name" required>
+        <input type="text" id="address" class="col-form-label" name="address" placeholder="Address" required>
+        <input type="text" id="phoneNumber" class="col-form-label" name="phoneNumber" placeholder="Phone Number" required>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <button type="submit" class="btn btn-primary">Add court</button>
+    </form>
+     </div>
+    <table id="courtsTable" class="table">
+        <thead>
+        <tr>
+            <th th:text="#{name}">Name</th>
+            <th th:text="#{address}">Address</th>
+            <th th:text="#{phone_number}">Phone number</th>
+            <th th:text="#{remove}">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Data will be appended here by JavaScript -->
+        </tbody>
+    </table>
+    </body>
 </div>
-</body>
 <footer th:replace="~{fragments/footer::footer}"></footer>
 </html>
