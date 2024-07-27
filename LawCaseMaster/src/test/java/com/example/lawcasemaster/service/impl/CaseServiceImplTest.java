@@ -43,7 +43,7 @@ public class CaseServiceImplTest {
     @BeforeEach
     public void setup() {
         caseRepository.deleteAll();
-        caseRepository.deleteAll();
+
     }
 
     @Test
