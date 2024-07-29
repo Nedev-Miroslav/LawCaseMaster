@@ -31,18 +31,19 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 ## Technologies used:
 <table>
   <tr>
-    <td style="background-color: #f89820; color: white; text-align: center;">Java</td>
-    <td style="background-color: #e34c26; color: white; text-align: center;">HTML</td>
-    <td style="background-color: #264de4; color: white; text-align: center;">CSS</td>
-    <td style="background-color: #563d7c; color: white; text-align: center;">Bootstrap</td>
-    <td style="background-color: #005f0f; color: white; text-align: center;">Thymeleaf</td>
-    <td style="background-color: #4479a1; color: white; text-align: center;">MySQL</td>
-    <td style="background-color: #f0db4f; color: black; text-align: center;">JavaScript</td>
-    <td style="background-color: #6db33f; color: white; text-align: center;">Spring Boot</td>
-    <td style="background-color: #6db33f; color: white; text-align: center;">Spring Data JPA</td>
-    <td style="background-color: #6db33f; color: white; text-align: center;">Spring Security</td>
+    <td style="background-color: #f89820; color: white; text-align: center; padding: 10px;">Java</td>
+    <td style="background-color: #e34c26; color: white; text-align: center; padding: 10px;">HTML</td>
+    <td style="background-color: #264de4; color: white; text-align: center; padding: 10px;">CSS</td>
+    <td style="background-color: #563d7c; color: white; text-align: center; padding: 10px;">Bootstrap</td>
+    <td style="background-color: #005f0f; color: white; text-align: center; padding: 10px;">Thymeleaf</td>
+    <td style="background-color: #4479a1; color: white; text-align: center; padding: 10px;">MySQL</td>
+    <td style="background-color: #f0db4f; color: black; text-align: center; padding: 10px;">JavaScript</td>
+    <td style="background-color: #6db33f; color: white; text-align: center; padding: 10px;">Spring Boot</td>
+    <td style="background-color: #6db33f; color: white; text-align: center; padding: 10px;">Spring Data JPA</td>
+    <td style="background-color: #6db33f; color: white; text-align: center; padding: 10px;">Spring Security</td>
   </tr>
 </table>
+
 
 ---
 
