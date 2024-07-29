@@ -27,6 +27,7 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
   - Internationalization / i18n - English and Bulgarian.
 
 ---
+</br>
 
 ## Screenshots
 ### Home page
@@ -49,4 +50,6 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 
 ### Court sessions
  <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-court-sessions.png" alt="court sessions page" style="width: 1800px; height: auto;">
+
+---
 
