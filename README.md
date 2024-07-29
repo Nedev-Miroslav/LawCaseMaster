@@ -1,5 +1,7 @@
-# LawCaseMaster
-SoftUni Final Project for Java Web 
+<div align="center">
+  # LawCaseMaster
+  SoftUni Final Project for Java Web 
+</div>
 
 <div align="center">
   <a href="https://github.com/Nedev-Miroslav/LawCaseMaster">
