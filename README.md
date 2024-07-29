@@ -11,12 +11,12 @@ SoftUni Final Project for Java Web
 
 ---
 
-## Description
+## Description:
 LawCaseMaster is a legal case management application designed for lawyers and small law firms. Provides the ability to store and process clients, cases, documents and court sessions.
 
 ---
 
-## Functionality
+## Functionality:
   - User registration as a lawyer, user login and logout;
   - Adding a new client. Users have the ability to view all their clients and remove a clients;
   - Adding a new case. When adding a case, the client's email for the case is specified. Users have the ability to view all their cases and remove cases;
@@ -28,8 +28,25 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 
 ---
 
+## Technologies used:
+<table>
+  <tr>
+    <td/><br>Java</td>
+    <td/><br>HTML</td>
+    <td/><br>CSS</td>
+    <td/><br>Bootstrap</td>
+    <td"/><br>Thymeleaf</td>
+    <td"/><br>MySQL</td>
+    <td"/><br>Javascript</td>
+    <td/><br>Spring Boot</td>
+    <td/><br>Spring Data JPA</td>
+    <td"/><br>Spring Security</td>
+  </tr>
+</table>
 
-## Screenshots
+---
+
+## Screenshots:
 ### Home page
  <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-not-loged.png" alt="home page" style="width: 1800px; height: auto;">
 
