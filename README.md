@@ -29,10 +29,24 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 ---
 
 ## Screenshots
-# Home page
- <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-not-loged.png" alt="home page" style="width: 1600px; height: auto;">
+### Home page
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-not-loged.png" alt="home page" style="width: 1800px; height: auto;">
  
--
+### Loged user index page
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-loged.png" alt="loged user page" style="width: 1800px; height: auto;">
 
+### Admin
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-admin.png" alt="admint page" style="width: 1800px; height: auto;">
 
+### Clients
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-clients.png" alt="clients page" style="width: 1800px; height: auto;">
+
+ ### Cases
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-cases.png" alt="Cases page" style="width: 1800px; height: auto;">
+
+### Documents
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-cocuments.png" alt="docunents page" style="width: 1800px; height: auto;">
+
+### Court sessions
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-court-sessions.png" alt="court sessions page" style="width: 1800px; height: auto;">
 
