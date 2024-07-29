@@ -31,7 +31,7 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 ## Technologies used:
 <table>
   <tr>
-    <td/>Java</td>
+    <td/ color="orange">Java</td>
     <td/>HTML</td>
     <td/>CSS</td>
     <td/>Bootstrap</td>
