@@ -31,16 +31,16 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 ## Technologies used:
 <table>
   <tr>
-    <td/><br>Java</td>
-    <td/><br>HTML</td>
-    <td/><br>CSS</td>
-    <td/><br>Bootstrap</td>
-    <td"/><br>Thymeleaf</td>
-    <td"/><br>MySQL</td>
-    <td"/><br>Javascript</td>
-    <td/><br>Spring Boot</td>
-    <td/><br>Spring Data JPA</td>
-    <td"/><br>Spring Security</td>
+    <td/>Java</td>
+    <td/>HTML</td>
+    <td/>CSS</td>
+    <td/>Bootstrap</td>
+    <td/>Thymeleaf</td>
+    <td/>MySQL</td>
+    <td/>Javascript</td>
+    <td/>Spring Boot</td>
+    <td/>Spring Data JPA</td>
+    <td/>Spring Security</td>
   </tr>
 </table>
 
