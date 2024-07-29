@@ -28,6 +28,9 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 
 ---
 
+## Screenshots
+Home page
+ <img src="https://github.com/Nedev-Miroslav/LawCaseMaster/blob/main/LawCaseMaster/src/main/resources/static/images/screenshot/screenshot-not-loged.png" alt="home page" style="width: 1600px; height: auto;">
 
 
 
