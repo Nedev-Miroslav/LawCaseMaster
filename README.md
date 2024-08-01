@@ -30,18 +30,17 @@ LawCaseMaster is a legal case management application designed for lawyers and sm
 
 ## Technologies used:
 
-![Java](https://img.shields.io/badge/Java-f89820?style=flat&logo=java&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML-e34c26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-264de4?style=flat&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563d7c?style=flat&logo=bootstrap&logoColor=white)
-![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005f0f?style=flat&logo=thymeleaf&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479a1?style=flat&logo=mysql&logoColor=white)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat&logo=hibernate&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=javascript&logoColor=black)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6db33f?style=flat&logo=spring&logoColor=white)
-![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6db33f?style=flat&logo=spring&logoColor=white)
-![Spring Security](https://img.shields.io/badge/Spring%20Security-6db33f?style=flat&logo=spring&logoColor=white)
-
+![Java](https://img.shields.io/badge/Java-f89820?style=flat&logo=java&logoColor=white)<br>
+![HTML](https://img.shields.io/badge/HTML-e34c26?style=flat&logo=html5&logoColor=white)<br>
+![CSS](https://img.shields.io/badge/CSS-264de4?style=flat&logo=css3&logoColor=white)<br>
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563d7c?style=flat&logo=bootstrap&logoColor=white)<br>
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005f0f?style=flat&logo=thymeleaf&logoColor=white)<br>
+![MySQL](https://img.shields.io/badge/MySQL-4479a1?style=flat&logo=mysql&logoColor=white)<br>
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat&logo=hibernate&logoColor=white)<br>
+![JavaScript](https://img.shields.io/badge/JavaScript-f0db4f?style=flat&logo=javascript&logoColor=black)<br>
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6db33f?style=flat&logo=spring&logoColor=white)<br>
+![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6db33f?style=flat&logo=spring&logoColor=white)<br>
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6db33f?style=flat&logo=spring&logoColor=white)<br>
 
 ---
 
